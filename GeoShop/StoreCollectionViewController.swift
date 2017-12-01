@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 import MapKit
+import MobileCoreServices
 
-class StoreCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ListTableViewControllerDelegate {
+class StoreCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ListTableViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var stores: [NSManagedObject]?
 
@@ -20,6 +21,45 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
             storeCollectionView.delegate = self
             storeCollectionView.alwaysBounceVertical = true
         }
+    }
+    
+    @IBOutlet weak var backgroundImage: UIImageView! {
+        didSet {
+            if let data = UserDefaults.standard.object(forKey: "savedBackgroundImage") as? NSData {
+                backgroundImage.image = UIImage(data: data as Data)
+            }
+        }
+    }
+    
+    @IBOutlet weak var cameraButton: UIBarButtonItem! {
+        didSet {
+            cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        }
+    }
+    
+    // TODO: Fix aspect ratio, image stretching
+    @IBAction func selectBackground(_ sender: UIBarButtonItem) {
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.mediaTypes = [kUTTypeImage as String]
+        picker.allowsEditing = false
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = (info[UIImagePickerControllerEditedImage] ?? info[UIImagePickerControllerOriginalImage]) as? UIImage {
+            backgroundImage.image = image
+            
+            let imageData:NSData = UIImageJPEGRepresentation(image, 0.5)! as NSData
+            UserDefaults.standard.set(imageData, forKey: "savedBackgroundImage")
+        }
+        
+        picker.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -59,6 +99,8 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
             
             let store = stores![indexPath.item]
             storeCell.storeName.text = store.value(forKey: "storeName") as? String // Force unwrap because guaranteed to be populated
+            
+            // TODO: Fix to get proper count after adding and pressing back
             let numItems = (store.value(forKey: "storeItemList") as? [String])?.count
             storeCell.itemsNeededText.text = "\(numItems ?? 0) Items Needed"
             let tap = UITapGestureRecognizer(target: self, action: #selector(selectStoreList(_:)))

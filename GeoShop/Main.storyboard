@@ -15,7 +15,7 @@
         <!--Store Collection View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="StoreCollectionViewController" customModule="GeoShopping" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="StoreCollectionViewController" customModule="GeoShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,7 +33,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StoreCollectionViewCell" id="uP5-af-eNs" customClass="StoreCollectionViewCell" customModule="GeoShopping" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StoreCollectionViewCell" id="uP5-af-eNs" customClass="StoreCollectionViewCell" customModule="GeoShop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="68"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -102,8 +102,15 @@
                                 <segue destination="68L-cs-1LX" kind="show" identifier="DisplayMap" id="TYP-3T-Ohz"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="QUH-6Z-8IF">
+                            <connections>
+                                <action selector="selectBackground:" destination="9pv-A4-QxB" id="h2j-fc-Fen"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundImage" destination="UBd-xN-Hoo" id="bhn-0T-IG7"/>
+                        <outlet property="cameraButton" destination="QUH-6Z-8IF" id="qaV-vo-PMe"/>
                         <outlet property="storeCollectionView" destination="fHA-Hr-fgO" id="Sv8-x7-TAB"/>
                     </connections>
                 </viewController>
@@ -111,10 +118,10 @@
             </objects>
             <point key="canvasLocation" x="2003" y="-169"/>
         </scene>
-        <!--List Table View Controller-->
+        <!--Title-->
         <scene sceneID="6kY-LR-bXB">
             <objects>
-                <viewController id="fYB-L3-rKv" customClass="ListTableViewController" customModule="GeoShopping" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fYB-L3-rKv" customClass="ListTableViewController" customModule="GeoShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BZ0-uG-6mg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,7 +130,7 @@
                                 <rect key="frame" x="0.0" y="79" width="320" height="440"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewListItem" id="v4s-6M-jQt" customClass="AddListTableCell" customModule="GeoShopping" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewListItem" id="v4s-6M-jQt" customClass="AddListTableCell" customModule="GeoShop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v4s-6M-jQt" id="IO3-rA-Vd6">
@@ -150,7 +157,7 @@
                                             <outlet property="textField" destination="E4S-PY-nJz" id="lzd-bu-O6x"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableListItem" id="Z3T-ex-T7C" customClass="ListTableViewCell" customModule="GeoShopping" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableListItem" id="Z3T-ex-T7C" customClass="ListTableViewCell" customModule="GeoShop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z3T-ex-T7C" id="L57-3n-Jem">
@@ -196,6 +203,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KrQ-5k-FTz"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="HT3-rX-eRt">
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="vKA-rr-fG8">
+                            <connections>
+                                <action selector="sendText:" destination="fYB-L3-rKv" id="wVY-eE-oc0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="listTable" destination="hxp-M2-kiL" id="6Tt-Lh-n3B"/>
                     </connections>
@@ -207,7 +221,7 @@
         <!--Map View Controller-->
         <scene sceneID="kMb-hs-uO9">
             <objects>
-                <viewController id="az1-ZD-BDh" customClass="MapViewController" customModule="GeoShopping" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="az1-ZD-BDh" customClass="MapViewController" customModule="GeoShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D0M-k6-804">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -310,6 +324,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="saw-ld-dJ7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="r73-KF-iQF">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

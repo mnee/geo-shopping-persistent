@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import MessageUI
 
-class ListTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddListTableCellDelegate {
+class ListTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddListTableCellDelegate, MFMessageComposeViewControllerDelegate {
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true, completion: nil)
+    }
     
     var itemsInList: [String]?
     
@@ -19,6 +24,30 @@ class ListTableViewController: UIViewController, UITableViewDelegate, UITableVie
         didSet {
             listTable.delegate = self
             listTable.dataSource = self
+        }
+    }
+    
+    @IBAction func sendText(_ sender: UIBarButtonItem) {
+        if (MFMessageComposeViewController.canSendText()) {
+            let messageVC = MFMessageComposeViewController()
+            
+            var messageBody = "We need "
+            if itemsInList != nil {
+                for itemIndex in itemsInList!.indices {
+                    let item = itemsInList![itemIndex]
+                    if itemIndex < itemsInList!.count - 1 {
+                        messageBody += item + ", "
+                    } else {
+                        messageBody += "and " + item
+                    }
+                }
+                
+                messageVC.body = messageBody + " from \(self.title ?? "the store")."
+            }
+            messageVC.recipients = []
+            messageVC.messageComposeDelegate = self
+            
+            self.present(messageVC, animated: true, completion: nil)
         }
     }
     
@@ -48,17 +77,6 @@ class ListTableViewController: UIViewController, UITableViewDelegate, UITableVie
         listTable.reloadData()
         delegate?.itemAddedToBeSaved(withTitle: textToAdd, in: storeIndexInCollection ?? 0)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // listTable.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
 
     // MARK: - Table view data source
 

@@ -12,11 +12,6 @@ import CoreLocation
 import CoreData
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
-
-/* let appDelegate = UIApplication.shared.delegate as! AppDelegate
- let managedContext = appDelegate.persistentContainer.viewContext
- let entity = NSEntityDescription.entity(forEntityName: "Store", in: managedContext)!
- let store = NSManagedObject(entity: entity, insertInto: managedContext)*/
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -116,7 +111,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     // Reveal buttons for selection
                     // TODO: Animate slide in
                     self.addStoreButton.isHidden = false
-                    self.doneButton.isHidden = false
                 }
             }
         }
@@ -128,16 +122,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             addStoreButton.isHidden = true
         }
     }
-    @IBOutlet weak var doneButton: UIButton! {
-        didSet {
-            doneButton.isHidden = true
-        }
-    }
+    @IBOutlet weak var doneButton: UIButton!
     
     // TODO: Add animation to indicate store was added
     @IBAction func addStoreClicked(_ sender: UIButton) {
         let storeAnnotation = mapView.selectedAnnotations[0]
         
+        // Citation: For getting the managed context helped by https://www.youtube.com/watch?v=TW_jcvVvPwI
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Store", in: managedContext)!
