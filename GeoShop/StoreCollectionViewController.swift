@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import MapKit
 
-class StoreCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class StoreCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ListTableViewControllerDelegate {
     
     var stores: [NSManagedObject]?
 
@@ -90,6 +91,8 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
             if let listVC = segue.destination.contents as? ListTableViewController {
                 listVC.itemsInList = (sender as? NSManagedObject)?.value(forKey: "storeItemList") as? [String]
                 listVC.title = (sender as? NSManagedObject)?.value(forKey: "storeName") as? String
+                listVC.delegate = self
+                listVC.storeIndexInCollection = stores?.index(of: (sender as? NSManagedObject)!)
             }
         } else if segue.identifier == "DisplayMap" {
             if let mapVC = segue.destination.contents as? MapViewController {
@@ -97,6 +100,22 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
             }
         }
     }
-
+    
+    func itemAddedToBeSaved(withTitle itemName: String, in storeIndex: Int) {
+        if let storeToUpdate = stores?[storeIndex] {
+            if var currentItems = storeToUpdate.value(forKey: "storeItemList") as? [String] {
+                currentItems.append(itemName)
+                storeToUpdate.setValue(currentItems, forKey: "storeItemList")
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                let managedContext = appDelegate.persistentContainer.viewContext
+                do {
+                    try managedContext.save()
+                } catch let error as NSError {
+                    print("Failed to save added item. Error: \(error)")
+                }
+            }
+        }
+    }
+    
 }
 

@@ -23,6 +23,7 @@
 		5320A0F61FD12115005CA442 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5320A0F51FD12110005CA442 /* MapKit.framework */; };
 		5320A0F71FD1211A005CA442 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5320A0F41FD12109005CA442 /* CoreLocation.framework */; };
 		5320A0F91FD121F9005CA442 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5320A0F81FD121F9005CA442 /* Assets.xcassets */; };
+		5320A0FB1FD12637005CA442 /* ListTableViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0FA1FD12637005CA442 /* ListTableViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		5320A0F41FD12109005CA442 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5320A0F51FD12110005CA442 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5320A0F81FD121F9005CA442 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5320A0FA1FD12637005CA442 /* ListTableViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				5320A0E81FD12074005CA442 /* AddListTableCellDelegate.swift */,
 				5320A0EA1FD12075005CA442 /* ListTableViewCell.swift */,
 				5320A0E91FD12075005CA442 /* ListTableViewController.swift */,
+				5320A0FA1FD12637005CA442 /* ListTableViewControllerDelegate.swift */,
 				5320A0EF1FD12084005CA442 /* Main.storyboard */,
 				5320A0D61FD12021005CA442 /* LaunchScreen.storyboard */,
 				5320A0D91FD12021005CA442 /* Info.plist */,
@@ -190,6 +193,7 @@
 				5320A0D31FD12021005CA442 /* GeoShop.xcdatamodeld in Sources */,
 				5320A0E41FD1206A005CA442 /* StoreList.swift in Sources */,
 				5320A0EE1FD12075005CA442 /* ListTableViewCell.swift in Sources */,
+				5320A0FB1FD12637005CA442 /* ListTableViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

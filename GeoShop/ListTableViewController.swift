@@ -12,6 +12,9 @@ class ListTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var itemsInList: [String]?
     
+    weak var delegate: ListTableViewControllerDelegate?
+    var storeIndexInCollection: Int?
+    
     @IBOutlet weak var listTable: UITableView! {
         didSet {
             listTable.delegate = self
@@ -43,6 +46,7 @@ class ListTableViewController: UIViewController, UITableViewDelegate, UITableVie
     func didSelectToBeAdded(with textToAdd: String) {
         itemsInList?.append(textToAdd)
         listTable.reloadData()
+        delegate?.itemAddedToBeSaved(withTitle: textToAdd, in: storeIndexInCollection ?? 0)
     }
     
     override func viewDidLoad() {
