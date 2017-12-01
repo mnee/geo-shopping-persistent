@@ -8,22 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		5320A0CB1FD12021005CA442 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0CA1FD12021005CA442 /* AppDelegate.swift */; };
-		5320A0CD1FD12021005CA442 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0CC1FD12021005CA442 /* ViewController.swift */; };
-		5320A0D01FD12021005CA442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5320A0CE1FD12021005CA442 /* Main.storyboard */; };
 		5320A0D31FD12021005CA442 /* GeoShop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0D11FD12021005CA442 /* GeoShop.xcdatamodeld */; };
-		5320A0D51FD12021005CA442 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5320A0D41FD12021005CA442 /* Assets.xcassets */; };
 		5320A0D81FD12021005CA442 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5320A0D61FD12021005CA442 /* LaunchScreen.storyboard */; };
+		5320A0E31FD1206A005CA442 /* StoreCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0DF1FD12069005CA442 /* StoreCollectionViewController.swift */; };
+		5320A0E41FD1206A005CA442 /* StoreList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0E01FD12069005CA442 /* StoreList.swift */; };
+		5320A0E51FD1206A005CA442 /* StoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0E11FD1206A005CA442 /* StoreCollectionViewCell.swift */; };
+		5320A0E61FD1206A005CA442 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0E21FD1206A005CA442 /* MapViewController.swift */; };
+		5320A0EB1FD12075005CA442 /* AddListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0E71FD12074005CA442 /* AddListTableCell.swift */; };
+		5320A0EC1FD12075005CA442 /* AddListTableCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0E81FD12074005CA442 /* AddListTableCellDelegate.swift */; };
+		5320A0ED1FD12075005CA442 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0E91FD12075005CA442 /* ListTableViewController.swift */; };
+		5320A0EE1FD12075005CA442 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0EA1FD12075005CA442 /* ListTableViewCell.swift */; };
+		5320A0F01FD12084005CA442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5320A0EF1FD12084005CA442 /* Main.storyboard */; };
+		5320A0F31FD12103005CA442 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5320A0F21FD120FC005CA442 /* CoreData.framework */; };
+		5320A0F61FD12115005CA442 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5320A0F51FD12110005CA442 /* MapKit.framework */; };
+		5320A0F71FD1211A005CA442 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5320A0F41FD12109005CA442 /* CoreLocation.framework */; };
+		5320A0F91FD121F9005CA442 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5320A0F81FD121F9005CA442 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5320A0C71FD12021005CA442 /* GeoShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5320A0CA1FD12021005CA442 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5320A0CC1FD12021005CA442 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5320A0CF1FD12021005CA442 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5320A0D21FD12021005CA442 /* GeoShop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GeoShop.xcdatamodel; sourceTree = "<group>"; };
-		5320A0D41FD12021005CA442 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5320A0D71FD12021005CA442 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5320A0D91FD12021005CA442 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5320A0DF1FD12069005CA442 /* StoreCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreCollectionViewController.swift; sourceTree = "<group>"; };
+		5320A0E01FD12069005CA442 /* StoreList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreList.swift; sourceTree = "<group>"; };
+		5320A0E11FD1206A005CA442 /* StoreCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreCollectionViewCell.swift; sourceTree = "<group>"; };
+		5320A0E21FD1206A005CA442 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		5320A0E71FD12074005CA442 /* AddListTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddListTableCell.swift; sourceTree = "<group>"; };
+		5320A0E81FD12074005CA442 /* AddListTableCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddListTableCellDelegate.swift; sourceTree = "<group>"; };
+		5320A0E91FD12075005CA442 /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		5320A0EA1FD12075005CA442 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		5320A0EF1FD12084005CA442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5320A0F21FD120FC005CA442 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5320A0F41FD12109005CA442 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5320A0F51FD12110005CA442 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5320A0F81FD121F9005CA442 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +51,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5320A0F71FD1211A005CA442 /* CoreLocation.framework in Frameworks */,
+				5320A0F61FD12115005CA442 /* MapKit.framework in Frameworks */,
+				5320A0F31FD12103005CA442 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +65,7 @@
 			children = (
 				5320A0C91FD12021005CA442 /* GeoShop */,
 				5320A0C81FD12021005CA442 /* Products */,
+				5320A0F11FD120FC005CA442 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +81,31 @@
 			isa = PBXGroup;
 			children = (
 				5320A0CA1FD12021005CA442 /* AppDelegate.swift */,
-				5320A0CC1FD12021005CA442 /* ViewController.swift */,
-				5320A0CE1FD12021005CA442 /* Main.storyboard */,
-				5320A0D41FD12021005CA442 /* Assets.xcassets */,
+				5320A0E21FD1206A005CA442 /* MapViewController.swift */,
+				5320A0E11FD1206A005CA442 /* StoreCollectionViewCell.swift */,
+				5320A0DF1FD12069005CA442 /* StoreCollectionViewController.swift */,
+				5320A0E01FD12069005CA442 /* StoreList.swift */,
+				5320A0E71FD12074005CA442 /* AddListTableCell.swift */,
+				5320A0E81FD12074005CA442 /* AddListTableCellDelegate.swift */,
+				5320A0EA1FD12075005CA442 /* ListTableViewCell.swift */,
+				5320A0E91FD12075005CA442 /* ListTableViewController.swift */,
+				5320A0EF1FD12084005CA442 /* Main.storyboard */,
 				5320A0D61FD12021005CA442 /* LaunchScreen.storyboard */,
 				5320A0D91FD12021005CA442 /* Info.plist */,
+				5320A0F81FD121F9005CA442 /* Assets.xcassets */,
 				5320A0D11FD12021005CA442 /* GeoShop.xcdatamodeld */,
 			);
 			path = GeoShop;
+			sourceTree = "<group>";
+		};
+		5320A0F11FD120FC005CA442 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5320A0F51FD12110005CA442 /* MapKit.framework */,
+				5320A0F41FD12109005CA442 /* CoreLocation.framework */,
+				5320A0F21FD120FC005CA442 /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,9 +167,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5320A0F01FD12084005CA442 /* Main.storyboard in Resources */,
+				5320A0F91FD121F9005CA442 /* Assets.xcassets in Resources */,
 				5320A0D81FD12021005CA442 /* LaunchScreen.storyboard in Resources */,
-				5320A0D51FD12021005CA442 /* Assets.xcassets in Resources */,
-				5320A0D01FD12021005CA442 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,23 +180,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5320A0CD1FD12021005CA442 /* ViewController.swift in Sources */,
 				5320A0CB1FD12021005CA442 /* AppDelegate.swift in Sources */,
+				5320A0EC1FD12075005CA442 /* AddListTableCellDelegate.swift in Sources */,
+				5320A0E61FD1206A005CA442 /* MapViewController.swift in Sources */,
+				5320A0EB1FD12075005CA442 /* AddListTableCell.swift in Sources */,
+				5320A0E31FD1206A005CA442 /* StoreCollectionViewController.swift in Sources */,
+				5320A0E51FD1206A005CA442 /* StoreCollectionViewCell.swift in Sources */,
+				5320A0ED1FD12075005CA442 /* ListTableViewController.swift in Sources */,
 				5320A0D31FD12021005CA442 /* GeoShop.xcdatamodeld in Sources */,
+				5320A0E41FD1206A005CA442 /* StoreList.swift in Sources */,
+				5320A0EE1FD12075005CA442 /* ListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5320A0CE1FD12021005CA442 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5320A0CF1FD12021005CA442 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5320A0D61FD12021005CA442 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
