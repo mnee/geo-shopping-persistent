@@ -10,4 +10,5 @@ import Foundation
 
 protocol ListTableViewControllerDelegate: class {
     func itemAddedToBeSaved(withTitle itemName: String, in storeIndex: Int)
+    func storeDeleted(_ storeIndex: Int)
 }

@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import CoreData
+import UserNotifications
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
     
@@ -148,6 +149,38 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // TODO: Fix error that can reselect and add a store
         mapView.addAnnotations(selectedStores)
         // Consider resetting location?
+        
+        let unCenter = UNUserNotificationCenter.current()
+        
+        var userNotifsAllowed = true
+        unCenter.getNotificationSettings { (settings) in
+            if settings.authorizationStatus != .authorized {
+                unCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+                    userNotifsAllowed = granted
+                }
+            }
+        }
+        
+        if userNotifsAllowed {
+            let content = UNMutableNotificationContent()
+            content.title = "Take a quick detour"
+            content.body = "You're passing near \(storeAnnotation.title!!) now!"
+            content.sound = UNNotificationSound.default()
+            
+            let region = CLCircularRegion(center: storeAnnotation.coordinate, radius: 1000.0, identifier: storeAnnotation.title!!)
+            region.notifyOnEntry = true
+            region.notifyOnExit = false
+            //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+            let trigger = UNLocationNotificationTrigger(region: region, repeats: false) // TODO: Check how to make this happen every time just once
+            
+            let request = UNNotificationRequest(identifier: "\(storeAnnotation.title!!) location notif ", content: content, trigger: trigger)
+            
+            unCenter.add(request) { (error: Error?) in
+                if error != nil {
+                    print("Failed to set notification. Error: \(error!)")
+                }
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

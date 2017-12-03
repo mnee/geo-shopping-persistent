@@ -30,6 +30,7 @@ class ListTableViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func sendText(_ sender: UIBarButtonItem) {
         if (MFMessageComposeViewController.canSendText()) {
             let messageVC = MFMessageComposeViewController()
+            messageVC.messageComposeDelegate = self
             
             var messageBody = "We need "
             if itemsInList != nil {
@@ -45,14 +46,13 @@ class ListTableViewController: UIViewController, UITableViewDelegate, UITableVie
                 messageVC.body = messageBody + " from \(self.title ?? "the store")."
             }
             messageVC.recipients = []
-            messageVC.messageComposeDelegate = self
             
             self.present(messageVC, animated: true, completion: nil)
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemsInList!.count+1
+        return itemsInList!.count+1 // +1 for add cell first
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,6 +76,15 @@ class ListTableViewController: UIViewController, UITableViewDelegate, UITableVie
         itemsInList?.append(textToAdd)
         listTable.reloadData()
         delegate?.itemAddedToBeSaved(withTitle: textToAdd, in: storeIndexInCollection ?? 0)
+    }
+    
+    override var previewActionItems: [UIPreviewActionItem] {
+        get {
+            let delete = UIPreviewAction(title: "Delete", style: .destructive) { (action, vc) in
+                self.delegate?.storeDeleted(self.storeIndexInCollection!)
+            }
+            return [delete]
+        }
     }
 
     // MARK: - Table view data source

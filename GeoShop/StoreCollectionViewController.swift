@@ -11,7 +11,7 @@ import CoreData
 import MapKit
 import MobileCoreServices
 
-class StoreCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ListTableViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class StoreCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ListTableViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIViewControllerPreviewingDelegate {
     
     var stores: [NSManagedObject]?
 
@@ -55,6 +55,7 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
         if let image = (info[UIImagePickerControllerEditedImage] ?? info[UIImagePickerControllerOriginalImage]) as? UIImage {
             backgroundImage.image = image
             
+            // UserDefaults help from https://www.youtube.com/watch?v=ggptRs89DNk
             let imageData:NSData = UIImageJPEGRepresentation(image, 0.5)! as NSData
             UserDefaults.standard.set(imageData, forKey: "savedBackgroundImage")
         }
@@ -65,6 +66,7 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Shopping Lists"
+        registerForPreviewing(with: self, sourceView: storeCollectionView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,6 +118,7 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
                     }
                 }
             }
+            
         }
         return cell
     }
@@ -143,6 +146,7 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
         }
     }
     
+    // List Table Delegate Methods
     func itemAddedToBeSaved(withTitle itemName: String, in storeIndex: Int) {
         if let storeToUpdate = stores?[storeIndex] {
             if var currentItems = storeToUpdate.value(forKey: "storeItemList") as? [String] {
@@ -159,5 +163,37 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
         }
     }
     
+    func storeDeleted(_ storeIndex: Int) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        managedContext.delete((stores?.remove(at: storeIndex))!)
+        do {
+            try managedContext.save()
+        } catch let error as NSError{
+            print("Failed to save delete. Error: \(error)")
+        }
+        storeCollectionView.reloadData()
+    }
+    
+    // Peeking with help from https://krakendev.io/peek-pop/
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        if let indexPath = storeCollectionView.indexPathForItem(at: location), let cell = stores?[indexPath.item] {
+            let previewVC = storyboard?.instantiateViewController(withIdentifier: "ListTableVC")
+            if let listVC = previewVC as? ListTableViewController {
+                listVC.itemsInList = cell.value(forKey: "storeItemList") as? [String]
+                listVC.title = cell.value(forKey: "storeName") as? String
+                listVC.delegate = self
+                listVC.storeIndexInCollection = indexPath.item
+                return listVC
+            }
+        }
+        return nil
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: nil)
+    }
+
+
 }
 

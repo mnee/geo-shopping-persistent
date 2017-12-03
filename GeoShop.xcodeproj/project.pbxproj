@@ -24,6 +24,7 @@
 		5320A0F71FD1211A005CA442 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5320A0F41FD12109005CA442 /* CoreLocation.framework */; };
 		5320A0F91FD121F9005CA442 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5320A0F81FD121F9005CA442 /* Assets.xcassets */; };
 		5320A0FB1FD12637005CA442 /* ListTableViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0FA1FD12637005CA442 /* ListTableViewControllerDelegate.swift */; };
+		5320A0FD1FD36388005CA442 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5320A0FC1FD36384005CA442 /* UserNotifications.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		5320A0F51FD12110005CA442 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5320A0F81FD121F9005CA442 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5320A0FA1FD12637005CA442 /* ListTableViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewControllerDelegate.swift; sourceTree = "<group>"; };
+		5320A0FC1FD36384005CA442 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5320A0FD1FD36388005CA442 /* UserNotifications.framework in Frameworks */,
 				5320A0F71FD1211A005CA442 /* CoreLocation.framework in Frameworks */,
 				5320A0F61FD12115005CA442 /* MapKit.framework in Frameworks */,
 				5320A0F31FD12103005CA442 /* CoreData.framework in Frameworks */,
@@ -104,6 +107,7 @@
 		5320A0F11FD120FC005CA442 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5320A0FC1FD36384005CA442 /* UserNotifications.framework */,
 				5320A0F51FD12110005CA442 /* MapKit.framework */,
 				5320A0F41FD12109005CA442 /* CoreLocation.framework */,
 				5320A0F21FD120FC005CA442 /* CoreData.framework */,
