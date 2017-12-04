@@ -42,7 +42,11 @@ class RecipePopoverViewController: UIViewController, UIImagePickerControllerDele
     var prepTime: String?
     var ingredients: String?
     var instructions: String?
-    var image: UIImage?
+    var image: UIImage? {
+        didSet {
+            imageSet = true
+        }
+    }
     
     @IBAction func cancelPopover(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)

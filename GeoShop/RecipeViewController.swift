@@ -81,7 +81,8 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if fetchedObjects.count > 0 {
                 let recipe = fetchedObjects[0]
                 
-                recipeName.text = recipe.value(forKey: "recipeName") as? String
+                recipeNameText = recipe.value(forKey: "recipeName") as? String
+                recipeName.text = recipeNameText
                 if let imageURL = recipe.value(forKey: "imageURL") as? String {
                     do {
                         let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
@@ -92,11 +93,13 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         print("Failed to load recipe image. Error: \(error)")
                     }
                 }
-            
+                
                 ingredients = recipe.value(forKey: "ingredients") as? [String]
                 ingredientsTable.reloadData()
-                instructions.text = recipe.value(forKey: "prepInstructions") as! String
-                prepTime.text = recipe.value(forKey: "prepTime") as? String
+                instructionsText = (recipe.value(forKey: "prepInstructions") as! String)
+                instructions.text = instructionsText
+                prepTimeText = "Prep Time: \(recipe.value(forKey: "prepTime") as! Int) minutes"
+                prepTime.text = prepTimeText
             }
         } catch let error {
             print("Failed to fetch. Error: \(error)")
