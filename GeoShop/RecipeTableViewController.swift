@@ -117,16 +117,16 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
             if let recipeFocusVC = segue.destination as? RecipeViewController {
                 if let recipeData = sender as? NSManagedObject {
                     recipeFocusVC.ingredients = recipeData.value(forKey: "ingredients") as? [String]
-                    recipeFocusVC.instructions.text = recipeData.value(forKey: "prepInstructions") as! String
-                    recipeFocusVC.prepTime.text = "Prep Time: \(recipeData.value(forKey: "prepTime") as! String) minutes"
-                    recipeFocusVC.recipeName.text = recipeData.value(forKey: "recipeName") as? String
+                    recipeFocusVC.instructionsText = (recipeData.value(forKey: "prepInstructions") as! String)
+                    recipeFocusVC.prepTimeText = "Prep Time: \(recipeData.value(forKey: "prepTime") as! Int) minutes"
+                    recipeFocusVC.recipeNameText = recipeData.value(forKey: "recipeName") as? String
                     
                     if let imageURL = recipeData.value(forKey: "imageURL") as? String {
                         do {
                             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
                             let fileURL = documentDirectory.appendingPathComponent(imageURL)
                             let imageData = try Data(contentsOf: fileURL)
-                            recipeFocusVC.recipeImage.image = UIImage(data: imageData)?.resizeImage(targetSize: CGSize(width: recipeFocusVC.recipeImage.bounds.width, height: recipeFocusVC.recipeImage.bounds.height))
+                            recipeFocusVC.recipeImageBackground = UIImage(data: imageData)
                         } catch {
                             print("Failed to load recipe image. Error: \(error)")
                         }

@@ -10,18 +10,29 @@ import UIKit
 
 class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var recipeName: UILabel!
-    @IBOutlet weak var recipeImage: UIImageView!
+    @IBOutlet weak var recipeName: UILabel! { didSet { recipeName.text = recipeNameText } }
+    @IBOutlet weak var recipeImage: UIImageView! {
+        didSet {
+            recipeImage.image = recipeImageBackground?.resizeImage(targetSize: CGSize(width: recipeImage.bounds.width, height: recipeImage.bounds.height))
+            
+        }
+        
+    }
     @IBOutlet weak var ingredientsTable: UITableView! {
         didSet {
             ingredientsTable.dataSource = self
             ingredientsTable.delegate = self
+            ingredientsTable.separatorStyle = .none
         }
     }
-    @IBOutlet weak var instructions: UITextView!
-    @IBOutlet weak var prepTime: UILabel!
+    @IBOutlet weak var instructions: UITextView! { didSet { instructions.text = instructionsText ?? "" } }
+    @IBOutlet weak var prepTime: UILabel! { didSet { prepTime.text = prepTimeText } }
     
+    var recipeNameText: String?
+    var recipeImageBackground: UIImage?
     var ingredients: [String]?
+    var instructionsText: String?
+    var prepTimeText: String?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredients?.count ?? 0
