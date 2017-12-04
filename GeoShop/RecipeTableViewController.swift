@@ -122,6 +122,8 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
                     recipeFocusVC.recipeNameText = recipeData.value(forKey: "recipeName") as? String
                     
                     if let imageURL = recipeData.value(forKey: "imageURL") as? String {
+                        recipeFocusVC.recipeID = Int(imageURL.dropFirst(6)) // Ex. pulls 7 off Recipe7
+                        
                         do {
                             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
                             let fileURL = documentDirectory.appendingPathComponent(imageURL)

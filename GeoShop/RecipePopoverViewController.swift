@@ -14,7 +14,11 @@ class RecipePopoverViewController: UIViewController, UIImagePickerControllerDele
 
     @IBOutlet weak var recipeImage: UIImageView! {
         didSet {
-            recipeImage.image = UIImage(named: "RecipeDefault")?.resizeImage(targetSize: CGSize(width: recipeImage.bounds.width, height: recipeImage.bounds.height))
+            if image != nil {
+                recipeImage.image = image!.resizeImage(targetSize: CGSize(width: recipeImage.bounds.width, height: recipeImage.bounds.height))
+            } else {
+                recipeImage.image = UIImage(named: "RecipeDefault")?.resizeImage(targetSize: CGSize(width: recipeImage.bounds.width, height: recipeImage.bounds.height))
+            }
         }
     }
     var imageSet: Bool = false
@@ -22,10 +26,23 @@ class RecipePopoverViewController: UIViewController, UIImagePickerControllerDele
     
     weak var delegate: RecipePopoverViewControllerDelegate?
     
-    @IBOutlet weak var recipeNameTF: UITextField!
-    @IBOutlet weak var prepTimeTF: UITextField!
-    @IBOutlet weak var ingredientsTF: UITextField!
-    @IBOutlet weak var instructionsTF: UITextField!
+    @IBOutlet weak var recipeNameTF: UITextField! { didSet { recipeNameTF.text = recipeName } }
+    @IBOutlet weak var prepTimeTF: UITextField! {
+        didSet {
+            prepTime?.removeFirst(11)
+            prepTime?.removeLast(8)
+            prepTimeTF.text = prepTime
+        }
+    }
+    @IBOutlet weak var ingredientsTF: UITextField! { didSet { ingredientsTF.text = ingredients } }
+    @IBOutlet weak var instructionsTF: UITextField! { didSet { instructionsTF.text = instructions } }
+    
+    // Used to set fields according to current recipe when editing rather than making new one
+    var recipeName: String?
+    var prepTime: String?
+    var ingredients: String?
+    var instructions: String?
+    var image: UIImage?
     
     @IBAction func cancelPopover(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
@@ -40,7 +57,18 @@ class RecipePopoverViewController: UIViewController, UIImagePickerControllerDele
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let managedContext = appDelegate.persistentContainer.viewContext
             let entity = NSEntityDescription.entity(forEntityName: "Recipe", in: managedContext)!
-            let recipe = NSManagedObject(entity: entity, insertInto: managedContext)
+            var recipe = NSManagedObject(entity: entity, insertInto: managedContext)
+            
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Recipe")
+            fetchRequest.predicate = NSPredicate(format: "imageURL == %@", "Recipe\(recipeID!)")
+            do {
+                let fetchedObjects = try managedContext.fetch(fetchRequest)
+                if fetchedObjects.count > 0 {
+                    recipe = fetchedObjects[0]
+                }
+            } catch let error {
+                print("Failed to fetch. Error: \(error)")
+            }
             
             recipe.setValue(recipeName, forKey: "recipeName")
             recipe.setValue(instructions, forKey: "prepInstructions")

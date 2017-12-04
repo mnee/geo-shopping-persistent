@@ -356,7 +356,7 @@
             </objects>
             <point key="canvasLocation" x="-208" y="-452"/>
         </scene>
-        <!--Recipe View Controller-->
+        <!--Title-->
         <scene sceneID="DBl-9G-7Yn">
             <objects>
                 <viewController id="xyj-3L-dk9" customClass="RecipeViewController" customModule="GeoShop" customModuleProvider="target" sceneMemberID="viewController">
@@ -456,6 +456,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PLs-gk-qWK"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="EoU-CD-dUw">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="abU-X4-kxc">
+                            <connections>
+                                <segue destination="BX7-Gn-FcT" kind="presentation" identifier="EditRecipe" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="hNr-tE-R04"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ingredientsTable" destination="cxp-TN-wsC" id="b2N-f3-MDa"/>
                         <outlet property="instructions" destination="96b-AJ-hWr" id="TFi-wK-W2t"/>
@@ -489,16 +496,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="P0C-Dj-9go">
-                                                    <rect key="frame" x="16" y="6" width="288" height="85.5"/>
+                                                    <rect key="frame" x="16" y="5.5" width="288" height="86"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fQ4-05-i6b">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="85.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="86"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="VLt-Wh-NJh"/>
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ol5-s5-LCh">
-                                                            <rect key="frame" x="108" y="0.0" width="180" height="85.5"/>
+                                                            <rect key="frame" x="108" y="0.0" width="180" height="86"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuQ-9z-x6q">
                                                                     <rect key="frame" x="0.0" y="0.0" width="180" height="32"/>
@@ -507,13 +514,13 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JE9-Za-kMX">
-                                                                    <rect key="frame" x="0.0" y="35" width="180" height="22.5"/>
+                                                                    <rect key="frame" x="0.0" y="35" width="180" height="23"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k71-cu-1u0">
-                                                                    <rect key="frame" x="0.0" y="60.5" width="180" height="25"/>
+                                                                    <rect key="frame" x="0.0" y="61" width="180" height="25"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -713,7 +720,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SgM-Hb-N1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3451.875" y="584.15492957746483"/>
+            <point key="canvasLocation" x="3600" y="1056"/>
         </scene>
         <!--Item-->
         <scene sceneID="v2G-Kc-7yg">
@@ -753,7 +760,7 @@
         <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fKx-pp-eMn"/>
-        <segue reference="60n-dC-enF"/>
+        <segue reference="hNr-tE-R04"/>
+        <segue reference="5TR-Me-eDX"/>
     </inferredMetricsTieBreakers>
 </document>
