@@ -29,6 +29,7 @@
 		5320A1011FD4F55F005CA442 /* RecipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A1001FD4F55F005CA442 /* RecipeTableViewController.swift */; };
 		5320A1031FD50601005CA442 /* RecipePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A1021FD50601005CA442 /* RecipePopoverViewController.swift */; };
 		5320A1051FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */; };
+		539E34E71FD52F36001033D4 /* RecipeSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		5320A1001FD4F55F005CA442 /* RecipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewController.swift; sourceTree = "<group>"; };
 		5320A1021FD50601005CA442 /* RecipePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePopoverViewController.swift; sourceTree = "<group>"; };
 		5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePopoverViewControllerDelegate.swift; sourceTree = "<group>"; };
+		539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSplitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				5320A1001FD4F55F005CA442 /* RecipeTableViewController.swift */,
 				5320A1021FD50601005CA442 /* RecipePopoverViewController.swift */,
 				5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */,
+				539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */,
 				5320A0EF1FD12084005CA442 /* Main.storyboard */,
 				5320A0D61FD12021005CA442 /* LaunchScreen.storyboard */,
 				5320A0D91FD12021005CA442 /* Info.plist */,
@@ -212,6 +215,7 @@
 				5320A0D31FD12021005CA442 /* GeoShop.xcdatamodeld in Sources */,
 				5320A0E41FD1206A005CA442 /* StoreList.swift in Sources */,
 				5320A0EE1FD12075005CA442 /* ListTableViewCell.swift in Sources */,
+				539E34E71FD52F36001033D4 /* RecipeSplitViewController.swift in Sources */,
 				5320A0FB1FD12637005CA442 /* ListTableViewControllerDelegate.swift in Sources */,
 				5320A1051FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift in Sources */,
 			);
