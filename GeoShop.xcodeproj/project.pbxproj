@@ -18,7 +18,6 @@
 		5320A0EC1FD12075005CA442 /* AddListTableCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0E81FD12074005CA442 /* AddListTableCellDelegate.swift */; };
 		5320A0ED1FD12075005CA442 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0E91FD12075005CA442 /* ListTableViewController.swift */; };
 		5320A0EE1FD12075005CA442 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0EA1FD12075005CA442 /* ListTableViewCell.swift */; };
-		5320A0F01FD12084005CA442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5320A0EF1FD12084005CA442 /* Main.storyboard */; };
 		5320A0F31FD12103005CA442 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5320A0F21FD120FC005CA442 /* CoreData.framework */; };
 		5320A0F61FD12115005CA442 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5320A0F51FD12110005CA442 /* MapKit.framework */; };
 		5320A0F71FD1211A005CA442 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5320A0F41FD12109005CA442 /* CoreLocation.framework */; };
@@ -30,6 +29,7 @@
 		5320A1031FD50601005CA442 /* RecipePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A1021FD50601005CA442 /* RecipePopoverViewController.swift */; };
 		5320A1051FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */; };
 		539E34E71FD52F36001033D4 /* RecipeSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */; };
+		53C05D511FD542F9005B61AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53C05D501FD542F9005B61AE /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +46,6 @@
 		5320A0E81FD12074005CA442 /* AddListTableCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddListTableCellDelegate.swift; sourceTree = "<group>"; };
 		5320A0E91FD12075005CA442 /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		5320A0EA1FD12075005CA442 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
-		5320A0EF1FD12084005CA442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5320A0F21FD120FC005CA442 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5320A0F41FD12109005CA442 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5320A0F51FD12110005CA442 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -58,6 +57,7 @@
 		5320A1021FD50601005CA442 /* RecipePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePopoverViewController.swift; sourceTree = "<group>"; };
 		5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePopoverViewControllerDelegate.swift; sourceTree = "<group>"; };
 		539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSplitViewController.swift; sourceTree = "<group>"; };
+		53C05D501FD542F9005B61AE /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,11 +110,11 @@
 				5320A1021FD50601005CA442 /* RecipePopoverViewController.swift */,
 				5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */,
 				539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */,
-				5320A0EF1FD12084005CA442 /* Main.storyboard */,
 				5320A0D61FD12021005CA442 /* LaunchScreen.storyboard */,
 				5320A0D91FD12021005CA442 /* Info.plist */,
 				5320A0F81FD121F9005CA442 /* Assets.xcassets */,
 				5320A0D11FD12021005CA442 /* GeoShop.xcdatamodeld */,
+				53C05D501FD542F9005B61AE /* Main.storyboard */,
 			);
 			path = GeoShop;
 			sourceTree = "<group>";
@@ -189,7 +189,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5320A0F01FD12084005CA442 /* Main.storyboard in Resources */,
+				53C05D511FD542F9005B61AE /* Main.storyboard in Resources */,
 				5320A0F91FD121F9005CA442 /* Assets.xcassets in Resources */,
 				5320A0D81FD12021005CA442 /* LaunchScreen.storyboard in Resources */,
 			);
