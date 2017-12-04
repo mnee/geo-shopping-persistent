@@ -356,10 +356,10 @@
             </objects>
             <point key="canvasLocation" x="-208" y="-452"/>
         </scene>
-        <!--View Controller-->
+        <!--Recipe View Controller-->
         <scene sceneID="DBl-9G-7Yn">
             <objects>
-                <viewController id="xyj-3L-dk9" sceneMemberID="viewController">
+                <viewController id="xyj-3L-dk9" customClass="RecipeViewController" customModule="GeoShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YWB-0j-ilc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -392,7 +392,7 @@
                                 <rect key="frame" x="16" y="250" width="136" height="254"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="IngredientTableCell" id="kZs-bz-SVJ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="IngredientTableCell" id="kZs-bz-SVJ" customClass="IngredientsTableViewCell" customModule="GeoShop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="136" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kZs-bz-SVJ" id="MDn-Cu-gS1">
@@ -408,6 +408,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ingredientName" destination="DvF-R2-vHb" id="Nhf-g0-MCc"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -453,6 +456,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PLs-gk-qWK"/>
                     </view>
+                    <connections>
+                        <outlet property="ingredientsTable" destination="cxp-TN-wsC" id="b2N-f3-MDa"/>
+                        <outlet property="instructions" destination="96b-AJ-hWr" id="TFi-wK-W2t"/>
+                        <outlet property="prepTime" destination="A5i-pZ-Zl5" id="Dug-B0-dTo"/>
+                        <outlet property="recipeImage" destination="iBr-5g-GNj" id="L7w-C3-4aM"/>
+                        <outlet property="recipeName" destination="bAd-b3-7lb" id="M2O-5m-UIy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PTs-un-6Kp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -479,16 +489,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="P0C-Dj-9go">
-                                                    <rect key="frame" x="16" y="5.5" width="288" height="86"/>
+                                                    <rect key="frame" x="16" y="6" width="288" height="85.5"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fQ4-05-i6b">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="86"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="85.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="VLt-Wh-NJh"/>
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ol5-s5-LCh">
-                                                            <rect key="frame" x="108" y="0.0" width="180" height="86"/>
+                                                            <rect key="frame" x="108" y="0.0" width="180" height="85.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuQ-9z-x6q">
                                                                     <rect key="frame" x="0.0" y="0.0" width="180" height="32"/>
@@ -497,13 +507,13 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JE9-Za-kMX">
-                                                                    <rect key="frame" x="0.0" y="35" width="180" height="23"/>
+                                                                    <rect key="frame" x="0.0" y="35" width="180" height="22.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k71-cu-1u0">
-                                                                    <rect key="frame" x="0.0" y="61" width="180" height="25"/>
+                                                                    <rect key="frame" x="0.0" y="60.5" width="180" height="25"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>

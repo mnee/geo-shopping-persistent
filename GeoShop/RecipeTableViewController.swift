@@ -45,7 +45,7 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
                     let imageData = try Data(contentsOf: fileURL)
                     recipeCell.recipeImage.image = UIImage(data: imageData)?.resizeImage(targetSize: CGSize(width: recipeCell.recipeImage.bounds.width, height: recipeCell.recipeImage.bounds.height))
                 } catch {
-                    print("Failed to save recipe image. Error: \(error)")
+                    print("Failed to load recipe image. Error: \(error)")
                 }
             }
         
@@ -114,7 +114,25 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
                 recipePopVC.delegate = self
             }
         } else if segue.identifier == "showDetail" {
-            //if let 
+            if let recipeFocusVC = segue.destination as? RecipeViewController {
+                if let recipeData = sender as? NSManagedObject {
+                    recipeFocusVC.ingredients = recipeData.value(forKey: "ingredients") as? [String]
+                    recipeFocusVC.instructions.text = recipeData.value(forKey: "prepInstructions") as! String
+                    recipeFocusVC.prepTime.text = "Prep Time: \(recipeData.value(forKey: "prepTime") as! String) minutes"
+                    recipeFocusVC.recipeName.text = recipeData.value(forKey: "recipeName") as? String
+                    
+                    if let imageURL = recipeData.value(forKey: "imageURL") as? String {
+                        do {
+                            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
+                            let fileURL = documentDirectory.appendingPathComponent(imageURL)
+                            let imageData = try Data(contentsOf: fileURL)
+                            recipeFocusVC.recipeImage.image = UIImage(data: imageData)?.resizeImage(targetSize: CGSize(width: recipeFocusVC.recipeImage.bounds.width, height: recipeFocusVC.recipeImage.bounds.height))
+                        } catch {
+                            print("Failed to load recipe image. Error: \(error)")
+                        }
+                    }
+                }
+            }
         }
     
     }

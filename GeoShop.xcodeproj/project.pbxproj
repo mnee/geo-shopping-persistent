@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		531AECF01FD546F4007ED2DB /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531AECEF1FD546F4007ED2DB /* RecipeViewController.swift */; };
+		531AECF21FD5483B007ED2DB /* IngredientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531AECF11FD5483B007ED2DB /* IngredientsTableViewCell.swift */; };
 		5320A0CB1FD12021005CA442 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0CA1FD12021005CA442 /* AppDelegate.swift */; };
 		5320A0D31FD12021005CA442 /* GeoShop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5320A0D11FD12021005CA442 /* GeoShop.xcdatamodeld */; };
 		5320A0D81FD12021005CA442 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5320A0D61FD12021005CA442 /* LaunchScreen.storyboard */; };
@@ -33,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		531AECEF1FD546F4007ED2DB /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		531AECF11FD5483B007ED2DB /* IngredientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewCell.swift; sourceTree = "<group>"; };
 		5320A0C71FD12021005CA442 /* GeoShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5320A0CA1FD12021005CA442 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5320A0D21FD12021005CA442 /* GeoShop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GeoShop.xcdatamodel; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 				5320A1021FD50601005CA442 /* RecipePopoverViewController.swift */,
 				5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */,
 				539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */,
+				531AECEF1FD546F4007ED2DB /* RecipeViewController.swift */,
+				531AECF11FD5483B007ED2DB /* IngredientsTableViewCell.swift */,
 				5320A0D61FD12021005CA442 /* LaunchScreen.storyboard */,
 				5320A0D91FD12021005CA442 /* Info.plist */,
 				5320A0F81FD121F9005CA442 /* Assets.xcassets */,
@@ -202,9 +208,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				531AECF21FD5483B007ED2DB /* IngredientsTableViewCell.swift in Sources */,
 				5320A0CB1FD12021005CA442 /* AppDelegate.swift in Sources */,
 				5320A0EC1FD12075005CA442 /* AddListTableCellDelegate.swift in Sources */,
 				5320A0E61FD1206A005CA442 /* MapViewController.swift in Sources */,
+				531AECF01FD546F4007ED2DB /* RecipeViewController.swift in Sources */,
 				5320A0FF1FD4F2B1005CA442 /* RecipeTableViewCell.swift in Sources */,
 				5320A0EB1FD12075005CA442 /* AddListTableCell.swift in Sources */,
 				5320A0E31FD1206A005CA442 /* StoreCollectionViewController.swift in Sources */,
