@@ -52,7 +52,7 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = (info[UIImagePickerControllerEditedImage] ?? info[UIImagePickerControllerOriginalImage]) as? UIImage {
+        if let image =  info[UIImagePickerControllerOriginalImage] as? UIImage {
             backgroundImage.image = image
             
             // UserDefaults help from https://www.youtube.com/watch?v=ggptRs89DNk
@@ -99,8 +99,8 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
         if let storeCell = cell as? StoreCollectionViewCell {
             // TODO: Fix to ensure title fits
             
-            let store = stores![indexPath.item]
-            storeCell.storeName.text = store.value(forKey: "storeName") as? String // Force unwrap because guaranteed to be populated
+            let store = stores![indexPath.item] // Force unwrap because guaranteed to be populated
+            storeCell.storeName.text = store.value(forKey: "storeName") as? String
             
             // TODO: Fix to get proper count after adding and pressing back
             let numItems = (store.value(forKey: "storeItemList") as? [String])?.count

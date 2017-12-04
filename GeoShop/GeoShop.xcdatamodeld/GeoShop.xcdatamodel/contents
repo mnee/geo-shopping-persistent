@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Recipe" representedClassName="Recipe" syncable="YES" codeGenerationType="class">
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredients" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="prepInstructions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="prepTime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="recipeName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="RecipeID" representedClassName="RecipeID" syncable="YES" codeGenerationType="class">
+        <attribute name="currentID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <entity name="Store" representedClassName="Store" syncable="YES" codeGenerationType="class">
         <attribute name="storeItemList" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="storeName" optional="YES" attributeType="String" syncable="YES"/>
@@ -7,5 +17,7 @@
     </entity>
     <elements>
         <element name="Store" positionX="-45" positionY="0" width="128" height="90"/>
+        <element name="Recipe" positionX="-9" positionY="63" width="128" height="120"/>
+        <element name="RecipeID" positionX="18" positionY="117" width="128" height="60"/>
     </elements>
 </model>
