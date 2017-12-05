@@ -164,6 +164,24 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
         }
     }
     
+    func itemDeletedToBeSaved(at itemIndex: Int, in storeIndex: Int) {
+        if let storeObject = stores?[storeIndex] {
+            if var updatedItems = (storeObject.value(forKey: "storeItemList") as? [String]) {
+                updatedItems.remove(at: itemIndex)
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                let managedContext = appDelegate.persistentContainer.viewContext
+                storeObject.setValue(updatedItems, forKey: "storeItemList")
+                
+                do {
+                    try managedContext.save()
+                } catch let error {
+                    print("Failed to delete item in store list from core data. Error: \(error)")
+                }
+                storeCollectionView.reloadData()
+            }
+        }
+    }
+    
     func storeDeleted(_ storeIndex: Int) {
         if let storeObject = stores?[storeIndex] {
             storeObject.removeFromCore()

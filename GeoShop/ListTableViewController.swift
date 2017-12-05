@@ -72,6 +72,19 @@ class ListTableViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.item != 0
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if itemsInList?.remove(at: indexPath.item-1) != nil {
+                delegate?.itemDeletedToBeSaved(at: indexPath.item - 1, in: storeIndexInCollection ?? 0)
+                listTable.reloadData()
+            }
+        }
+    }
+    
     func didSelectToBeAdded(with textToAdd: String) {
         itemsInList?.append(textToAdd)
         listTable.reloadData()

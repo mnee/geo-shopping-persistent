@@ -319,11 +319,11 @@
             </objects>
             <point key="canvasLocation" x="2792" y="-1265"/>
         </scene>
-        <!--First-->
+        <!--Shopping Lists-->
         <scene sceneID="4o7-gB-xDF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5zV-x5-Htx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="qcp-wp-c0v"/>
+                    <tabBarItem key="tabBarItem" title="Shopping Lists" image="first" id="qcp-wp-c0v"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fWg-Ne-D9R">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -585,7 +585,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3py-vQ-cwS">
-                                <rect key="frame" x="16" y="20" width="288" height="279"/>
+                                <rect key="frame" x="16" y="64" width="288" height="235"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="pZ0-Qy-vEj">
                                         <rect key="frame" x="10" y="20" width="268" height="203"/>
@@ -662,7 +662,7 @@
                                         </constraints>
                                     </stackView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jJS-US-Wwx">
-                                        <rect key="frame" x="140" y="48" width="132" height="71"/>
+                                        <rect key="frame" x="140" y="48" width="132" height="27"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0Q-vW-Hyr">
                                         <rect key="frame" x="140" y="20" width="132" height="26"/>
@@ -672,7 +672,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzA-ml-mHP">
-                                        <rect key="frame" x="10" y="243" width="48" height="30"/>
+                                        <rect key="frame" x="10" y="199" width="48" height="30"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -681,7 +681,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLx-Y8-Jcd">
-                                        <rect key="frame" x="244" y="243" width="34" height="30"/>
+                                        <rect key="frame" x="244" y="199" width="34" height="30"/>
                                         <state key="normal" title="Save"/>
                                         <connections>
                                             <action selector="saveRecipe:" destination="BX7-Gn-FcT" eventType="touchUpInside" id="l9z-0k-UZB"/>
@@ -730,11 +730,11 @@
             </objects>
             <point key="canvasLocation" x="3600" y="1056"/>
         </scene>
-        <!--Item-->
+        <!--Recipes-->
         <scene sceneID="v2G-Kc-7yg">
             <objects>
                 <splitViewController id="ciQ-bZ-YYO" customClass="RecipeSplitViewController" customModule="GeoShop" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="tfl-wR-Css"/>
+                    <tabBarItem key="tabBarItem" title="Recipes" image="second" id="tfl-wR-Css"/>
                     <connections>
                         <segue destination="xyj-3L-dk9" kind="relationship" relationship="detailViewController" id="60n-dC-enF"/>
                         <segue destination="7B3-q9-Zgm" kind="relationship" relationship="masterViewController" id="cd7-04-7Ij"/>
@@ -766,9 +766,10 @@
     <resources>
         <image name="WhiteMarbleBackground" width="2048" height="1347"/>
         <image name="first" width="25" height="25"/>
+        <image name="second" width="18" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hNr-tE-R04"/>
-        <segue reference="5TR-Me-eDX"/>
+        <segue reference="60n-dC-enF"/>
     </inferredMetricsTieBreakers>
 </document>

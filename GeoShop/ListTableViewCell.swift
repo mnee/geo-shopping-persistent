@@ -44,7 +44,6 @@ extension UIImage {
         let targetAspectRatio = targetSize.width / targetSize.height
         var croppingWidth = self.size.width
         var croppingHeight = self.size.height
-        print(self.imageOrientation.rawValue)
         let currentAspectRatio = croppingWidth / croppingHeight
         var croppedImage: UIImage?
         
