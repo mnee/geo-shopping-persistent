@@ -9,8 +9,7 @@
 import UIKit
 import CoreData
 
-class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RecipePopoverViewControllerDelegate {
-    
+class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RecipePopoverViewControllerDelegate, UIViewControllerPreviewingDelegate {
     
     var recipes: [NSManagedObject]?
     var recipeID: NSManagedObject?
@@ -55,6 +54,19 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if let recipeObject = recipes?.remove(at: indexPath.item) {
+                recipeObject.removeFromCore()
+                recipeTable.reloadData()
+            }
+        }
+    }
+    
     @objc func selectRecipe(_ sender: UITapGestureRecognizer) {
         // TODO: Segue to a recipe viewer VC
         if sender.state == UIGestureRecognizerState.ended, let recipeCell = sender.view as? RecipeTableViewCell {
@@ -68,6 +80,7 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         recipeTable.estimatedRowHeight = 150.0
         recipeTable.rowHeight = UITableViewAutomaticDimension
+        registerForPreviewing(with: self, sourceView: recipeTable)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -149,6 +162,50 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
         fetchRecipeCoreData()
         recipeTable.reloadData()
     }
-    
 
+    // 3D Touch
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        if let indexPath = recipeTable.indexPathForRow(at: location), let recipeData = recipes?[indexPath.item] {
+            let previewVC = storyboard?.instantiateViewController(withIdentifier: "RecipeView")
+            if let recipeFocusVC = previewVC as? RecipeViewController {
+                recipeFocusVC.ingredients = recipeData.value(forKey: "ingredients") as? [String]
+                recipeFocusVC.instructionsText = (recipeData.value(forKey: "prepInstructions") as! String)
+                recipeFocusVC.prepTimeText = "Prep Time: \(recipeData.value(forKey: "prepTime") as! Int) minutes"
+                recipeFocusVC.recipeNameText = recipeData.value(forKey: "recipeName") as? String
+                
+                if let imageURL = recipeData.value(forKey: "imageURL") as? String {
+                    recipeFocusVC.recipeID = Int(imageURL.dropFirst(6)) // Ex. pulls 7 off Recipe7
+                    
+                    do {
+                        let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
+                        let fileURL = documentDirectory.appendingPathComponent(imageURL)
+                        let imageData = try Data(contentsOf: fileURL)
+                        recipeFocusVC.recipeImageBackground = UIImage(data: imageData)
+                    } catch {
+                        print("Failed to load recipe image. Error: \(error)")
+                    }
+                }
+                return recipeFocusVC
+            }
+        }
+        return nil
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: nil)
+    }
+
+}
+
+extension NSManagedObject {
+    func removeFromCore() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        managedContext.delete(self)
+        do {
+            try managedContext.save()
+        } catch let error {
+            print("Failed to delete recipe. Error: \(error)")
+        }
+    }
 }

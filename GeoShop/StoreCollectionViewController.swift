@@ -13,7 +13,19 @@ import MobileCoreServices
 
 class StoreCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ListTableViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIViewControllerPreviewingDelegate {
     
-    var stores: [NSManagedObject]?
+    var stores: [NSManagedObject]? {
+        get {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let managedContext = appDelegate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Store")
+            do {
+                return try managedContext.fetch(fetchRequest)
+            } catch let error as NSError {
+                print("Failed to load stored data. Error: \(error)")
+            }
+            return nil
+        }
+    }
 
     @IBOutlet weak var storeCollectionView: UICollectionView! {
         didSet {
@@ -67,18 +79,6 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
         super.viewDidLoad()
         self.title = "Shopping Lists"
         registerForPreviewing(with: self, sourceView: storeCollectionView)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Store")
-        do {
-            stores = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Failed to load stored data. Error: \(error)")
-        }
     }
     
     var flowLayout: UICollectionViewFlowLayout? {
@@ -160,18 +160,22 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
                     print("Failed to save added item. Error: \(error)")
                 }
             }
+            storeCollectionView.reloadData()
         }
     }
     
     func storeDeleted(_ storeIndex: Int) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let managedContext = appDelegate.persistentContainer.viewContext
-        managedContext.delete((stores?.remove(at: storeIndex))!)
-        do {
-            try managedContext.save()
-        } catch let error as NSError{
-            print("Failed to save delete. Error: \(error)")
+        if let storeObject = stores?[storeIndex] {
+            storeObject.removeFromCore()
         }
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let managedContext = appDelegate.persistentContainer.viewContext
+//        managedContext.delete((stores?.remove(at: storeIndex))!)
+//        do {
+//            try managedContext.save()
+//        } catch let error as NSError{
+//            print("Failed to save delete. Error: \(error)")
+//        }
         storeCollectionView.reloadData()
     }
     

@@ -137,7 +137,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         store.setValue(storeAnnotation.title!!, forKey: "storeName")
         store.setValue("https://maps.googleapis.com/maps/api/streetview?size=400x400&location=\(storeAnnotation.coordinate.latitude),\(storeAnnotation.coordinate.longitude)&key=AIzaSyAmX40dcbk2dP5oSkQCrMriWc3QNRt-KOc", forKey: "urlTitle")
-        store.setValue(["Bread", "Milk"], forKey: "storeItemList")
+        store.setValue([], forKey: "storeItemList")
         
         do {
             try managedContext.save()

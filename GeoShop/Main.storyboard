@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -55,7 +56,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f1P-vk-3tS">
                                                     <rect key="frame" x="150" y="0.0" width="150" height="68"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" priority="750" constant="150" id="ujx-ei-E2q"/>
+                                                        <constraint firstAttribute="width" constant="150" id="ujx-ei-E2q"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -134,7 +135,7 @@
                                 <rect key="frame" x="0.0" y="79" width="320" height="440"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewListItem" id="3kC-AQ-yqq" customClass="AddListTableCell" customModule="GeoShop" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NewListItem" id="3kC-AQ-yqq" customClass="AddListTableCell" customModule="GeoShop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3kC-AQ-yqq" id="o1K-JV-qcc">
@@ -161,7 +162,7 @@
                                             <outlet property="textField" destination="LCd-kv-yw9" id="xTl-B8-yQI"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableListItem" id="tsn-gy-MbZ" customClass="ListTableViewCell" customModule="GeoShop" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TableListItem" id="tsn-gy-MbZ" customClass="ListTableViewCell" customModule="GeoShop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tsn-gy-MbZ" id="5NS-US-Zve">
@@ -174,7 +175,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ry3-e1-Yt2">
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ry3-e1-Yt2">
                                                     <rect key="frame" x="15" y="6" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="MNh-9B-EDX"/>
@@ -359,7 +360,7 @@
         <!--Title-->
         <scene sceneID="DBl-9G-7Yn">
             <objects>
-                <viewController id="xyj-3L-dk9" customClass="RecipeViewController" customModule="GeoShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecipeView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xyj-3L-dk9" customClass="RecipeViewController" customModule="GeoShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YWB-0j-ilc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -400,9 +401,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="• Item 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DvF-R2-vHb">
-                                                    <rect key="frame" x="15" y="12" width="58" height="21"/>
+                                                    <rect key="frame" x="15" y="12" width="121" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -457,11 +458,19 @@
                         <viewLayoutGuide key="safeArea" id="PLs-gk-qWK"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="EoU-CD-dUw">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="abU-X4-kxc">
-                            <connections>
-                                <segue destination="BX7-Gn-FcT" kind="presentation" identifier="EditRecipe" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="hNr-tE-R04"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem id="43f-rt-Mne"/>
+                            <barButtonItem title="Print" id="Trx-hX-qoW">
+                                <connections>
+                                    <action selector="printRecipe:" destination="xyj-3L-dk9" id="fmx-2l-4wu"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="edit" id="abU-X4-kxc">
+                                <connections>
+                                    <segue destination="BX7-Gn-FcT" kind="presentation" identifier="EditRecipe" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="hNr-tE-R04"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="ingredientsTable" destination="cxp-TN-wsC" id="b2N-f3-MDa"/>
@@ -756,7 +765,7 @@
     </scenes>
     <resources>
         <image name="WhiteMarbleBackground" width="2048" height="1347"/>
-        <image name="first" width="30" height="30"/>
+        <image name="first" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hNr-tE-R04"/>

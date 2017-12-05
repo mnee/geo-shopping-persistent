@@ -36,8 +36,61 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var prepTimeText: String?
     var recipeID: Int?
     
+    override var previewActionItems: [UIPreviewActionItem] {
+        get {
+            let print = UIPreviewAction(title: "Print", style: .default) { (action, vc) in
+                self.executeAirPrint()
+            }
+            let notif = UIPreviewAction(title: "Schedule Meal", style: .default) { (action, vc) in
+                //
+            }
+            let ingreds = UIPreviewActionGroup(title: "Add Ingredients", style: .default, actions: getIngredientActions())
+            
+            let delete = UIPreviewAction(title: "Delete", style: .destructive) { (action, vc) in
+                //
+            }
+            return [print, notif, ingreds, delete]
+        }
+    }
+    
+    func getIngredientActions() -> [UIPreviewAction] {
+        var actions: [UIPreviewAction] = []
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Store")
+        do {
+            let fetchedObjects = try managedContext.fetch(fetchRequest)
+            for storeObject in fetchedObjects {
+                if let storeName = storeObject.value(forKey: "storeName") as? String {
+                    let ingredientAction = UIPreviewAction(title: "to \(storeName)", style: .default) { (action, vc)  in
+                        if let currentItems = storeObject.value(forKey: "storeItemList") as? [String] {
+                            if self.ingredients != nil {
+                                storeObject.setValue(currentItems + self.ingredients!, forKey: "storeItemList")
+                                do {
+                                    try managedContext.save()
+                                } catch let error {
+                                    print("Failed to save ingredients of recipe to store. Error: \(error)")
+                                }
+                            }
+                        }
+                    }
+                    actions.append(ingredientAction)
+                }
+            }
+        } catch let error {
+            print("Failed to load stores for preview actions. Error: \(error)")
+        }
+        
+        return actions
+    }
+    
     // Airprint help from: https://www.youtube.com/watch?v=NAmj9v-CBGg
     @IBAction func printRecipe(_ sender: UIBarButtonItem) {
+        executeAirPrint()
+    }
+    
+    func executeAirPrint() {
         let printController = UIPrintInteractionController.shared
         let printInfo = UIPrintInfo(dictionary: nil)
         printInfo.jobName = "Printing recipe"
