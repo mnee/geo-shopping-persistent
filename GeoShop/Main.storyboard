@@ -364,7 +364,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iBr-5g-GNj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iBr-5g-GNj">
                                 <rect key="frame" x="0.0" y="64" width="320" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="tWb-bA-Keq"/>
@@ -652,7 +652,7 @@
                                             <constraint firstItem="Nld-75-TMA" firstAttribute="height" secondItem="ogw-9g-bYl" secondAttribute="height" id="yVA-rz-yLZ"/>
                                         </constraints>
                                     </stackView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jJS-US-Wwx">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jJS-US-Wwx">
                                         <rect key="frame" x="140" y="48" width="132" height="71"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0Q-vW-Hyr">
@@ -759,7 +759,7 @@
         <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="C58-Hh-bGj"/>
+        <segue reference="hNr-tE-R04"/>
         <segue reference="5TR-Me-eDX"/>
     </inferredMetricsTieBreakers>
 </document>

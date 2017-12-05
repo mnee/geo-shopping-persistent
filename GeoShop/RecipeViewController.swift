@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Social
 
 class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RecipePopoverViewControllerDelegate {
 

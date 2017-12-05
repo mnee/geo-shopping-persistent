@@ -110,7 +110,7 @@ class RecipePopoverViewController: UIViewController, UIImagePickerControllerDele
         if let image =  info[UIImagePickerControllerOriginalImage] as? UIImage {
             recipeImage.image = image
             
-            let imageData = UIImageJPEGRepresentation(image, 0.5)
+            let imageData = UIImageJPEGRepresentation(image, 0.8)
             do {
                 let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
                 let fileURL = documentDirectory.appendingPathComponent("Recipe\(recipeID!)")

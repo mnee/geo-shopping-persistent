@@ -41,22 +41,38 @@ class ListTableViewCell: UITableViewCell {
 
 }
 
-// Adapted from https://stackoverflow.com/questions/31314412/how-to-resize-image-in-swift
 extension UIImage {
     func resizeImage(targetSize: CGSize) -> UIImage {
-        let width = self.size.width
-        let height = self.size.height
+        let targetAspectRatio = targetSize.width / targetSize.height
+        var croppingWidth = self.size.width
+        var croppingHeight = self.size.height
+        print(self.imageOrientation.rawValue)
+        let currentAspectRatio = croppingWidth / croppingHeight
+        var croppedImage: UIImage?
         
+        if targetAspectRatio >= currentAspectRatio {
+            // Desired width greater than height
+            croppingHeight = croppingWidth/targetAspectRatio
+            if let cgCroppedImage = self.cgImage?.cropping(to: CGRect(x: 0.0, y: (self.size.height - croppingHeight)/2.0, width: croppingWidth, height: croppingHeight)) {
+                croppedImage = UIImage(cgImage: cgCroppedImage)
+            }
+        } else {
+            croppingWidth = croppingHeight*targetAspectRatio
+            if let cgCroppedImage = self.cgImage?.cropping(to: CGRect(x: (self.size.width - croppingWidth)/2.0, y: 0.0, width: croppingWidth, height: croppingHeight)) {
+                croppedImage = UIImage(cgImage: cgCroppedImage)
+            }
+        }
         
-        self.cgImage?.cropping(to: <#T##CGRect#>)
-        let size = self.size
+        // Adapted from https://stackoverflow.com/questions/31314412/how-to-resize-image-in-swift
+        let imageToStretch = croppedImage ?? self
+        let size = imageToStretch.size
         
         let widthRatio  = targetSize.width  / size.width
         let heightRatio = targetSize.height / size.height
         
         // Figure out what our orientation is, and use that to form the rectangle
         var newSize: CGSize
-        if(widthRatio > heightRatio) {
+        if widthRatio > heightRatio {
             newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
         } else {
             newSize = CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
@@ -67,7 +83,7 @@ extension UIImage {
         
         // Actually do the resizing to the rect using the ImageContext stuff
         UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-        self.draw(in: rect)
+        imageToStretch.draw(in: rect)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
