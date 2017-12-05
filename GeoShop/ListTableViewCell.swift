@@ -44,6 +44,11 @@ class ListTableViewCell: UITableViewCell {
 // Adapted from https://stackoverflow.com/questions/31314412/how-to-resize-image-in-swift
 extension UIImage {
     func resizeImage(targetSize: CGSize) -> UIImage {
+        let width = self.size.width
+        let height = self.size.height
+        
+        
+        self.cgImage?.cropping(to: <#T##CGRect#>)
         let size = self.size
         
         let widthRatio  = targetSize.width  / size.width
