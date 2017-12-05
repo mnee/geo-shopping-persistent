@@ -171,7 +171,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             region.notifyOnEntry = true
             region.notifyOnExit = false
             //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-            let trigger = UNLocationNotificationTrigger(region: region, repeats: false) // TODO: Check how to make this happen every time just once
+            let trigger = UNLocationNotificationTrigger(region: region, repeats: true) 
             
             let request = UNNotificationRequest(identifier: "\(storeAnnotation.title!!) location notif ", content: content, trigger: trigger)
             

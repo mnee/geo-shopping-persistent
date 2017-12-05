@@ -60,25 +60,27 @@ class RecipePopoverViewController: UIViewController, UIImagePickerControllerDele
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let managedContext = appDelegate.persistentContainer.viewContext
-            let entity = NSEntityDescription.entity(forEntityName: "Recipe", in: managedContext)!
-            var recipe = NSManagedObject(entity: entity, insertInto: managedContext)
             
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Recipe")
             fetchRequest.predicate = NSPredicate(format: "imageURL == %@", "Recipe\(recipeID!)")
+            
+            var recipe: NSManagedObject
             do {
                 let fetchedObjects = try managedContext.fetch(fetchRequest)
                 if fetchedObjects.count > 0 {
                     recipe = fetchedObjects[0]
+                } else {
+                    let entity = NSEntityDescription.entity(forEntityName: "Recipe", in: managedContext)!
+                    recipe = NSManagedObject(entity: entity, insertInto: managedContext)
                 }
+                recipe.setValue(recipeName, forKey: "recipeName")
+                recipe.setValue(instructions, forKey: "prepInstructions")
+                recipe.setValue(Int(prepTime), forKey: "prepTime")
+                recipe.setValue(ingredients.components(separatedBy: ", "), forKey: "ingredients")
+                recipe.setValue(imageSet ? "Recipe\(recipeID!)" : "Default", forKey: "imageURL")
             } catch let error {
                 print("Failed to fetch. Error: \(error)")
             }
-            
-            recipe.setValue(recipeName, forKey: "recipeName")
-            recipe.setValue(instructions, forKey: "prepInstructions")
-            recipe.setValue(Int(prepTime), forKey: "prepTime")
-            recipe.setValue(ingredients.components(separatedBy: ", "), forKey: "ingredients")
-            recipe.setValue(imageSet ? "Recipe\(recipeID!)" : "Default", forKey: "imageURL")
             
             do {
                 try managedContext.save()

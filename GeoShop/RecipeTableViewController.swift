@@ -33,7 +33,7 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
             if let numItems = (recipe.value(forKey: "ingredients") as? [String])?.count {
                 recipeCell.recipeItemsNeeded.text = "\(numItems) items needed"
             }
-            recipeCell.recipePrepTime.text = recipe.value(forKey: "prepTime") as? String
+            recipeCell.recipePrepTime.text = "\(recipe.value(forKey: "prepTime") as! Int) minutes"
             
             let imageURL = recipe.value(forKey: "imageURL")
             if (imageURL as? String) == "Default" {
@@ -62,6 +62,12 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
                 performSegue(withIdentifier: "showDetail", sender: recipes![indexPath.item])
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        recipeTable.estimatedRowHeight = 150.0
+        recipeTable.rowHeight = UITableViewAutomaticDimension
     }
     
     override func viewWillAppear(_ animated: Bool) {
