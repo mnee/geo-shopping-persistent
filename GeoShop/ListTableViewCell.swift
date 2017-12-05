@@ -16,8 +16,6 @@ class ListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var checkBox: UIButton! {
         didSet {
-            checkedImage = checkedImage?.resizeImage(targetSize: CGSize(width: checkBox.bounds.width, height: checkBox.bounds.height))
-            uncheckedImage = uncheckedImage?.resizeImage(targetSize: CGSize(width: checkBox.bounds.width, height: checkBox.bounds.height))
             if checked {
                 checkBox.setImage(checkedImage, for: UIControlState.normal)
             } else {
