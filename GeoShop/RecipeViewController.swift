@@ -8,10 +8,9 @@
 
 import UIKit
 import CoreData
-import Social
 
-class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RecipePopoverViewControllerDelegate {
-
+class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RecipePopoverViewControllerDelegate, UIPrintInteractionControllerDelegate {
+    
     @IBOutlet weak var recipeName: UILabel! { didSet { recipeName.text = recipeNameText } }
     @IBOutlet weak var recipeImage: UIImageView! {
         didSet {
@@ -36,6 +35,33 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var instructionsText: String?
     var prepTimeText: String?
     var recipeID: Int?
+    
+    // Airprint help from: https://www.youtube.com/watch?v=NAmj9v-CBGg
+    @IBAction func printRecipe(_ sender: UIBarButtonItem) {
+        let printController = UIPrintInteractionController.shared
+        let printInfo = UIPrintInfo(dictionary: nil)
+        printInfo.jobName = "Printing recipe"
+        printInfo.outputType = .general
+        printController.printInfo = printInfo
+        printController.delegate = self
+        UIGraphicsBeginImageContext(view.bounds.size)
+        view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+        if let screenshot = UIGraphicsGetImageFromCurrentImageContext() {
+            printController.printingItem = screenshot
+        } else {
+            printController.printingItem = recipeImageBackground!
+        }
+        
+        printController.present(animated: true) { (_, isPrinted, error) in
+            if error == nil {
+                if isPrinted {
+                    print("Successfully printed")
+                } else {
+                    print("Failed to print")
+                }
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredients?.count ?? 0
@@ -108,3 +134,4 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
 }
+
