@@ -31,6 +31,7 @@
 		5320A1031FD50601005CA442 /* RecipePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A1021FD50601005CA442 /* RecipePopoverViewController.swift */; };
 		5320A1051FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */; };
 		539E34E71FD52F36001033D4 /* RecipeSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */; };
+		53B5FE001FD7C7AC00DEC29D /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5FDFF1FD7C7AC00DEC29D /* LaunchScreenViewController.swift */; };
 		53C05D511FD542F9005B61AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53C05D501FD542F9005B61AE /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		5320A1021FD50601005CA442 /* RecipePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePopoverViewController.swift; sourceTree = "<group>"; };
 		5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePopoverViewControllerDelegate.swift; sourceTree = "<group>"; };
 		539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSplitViewController.swift; sourceTree = "<group>"; };
+		53B5FDFF1FD7C7AC00DEC29D /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		53C05D501FD542F9005B61AE /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +118,7 @@
 				539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */,
 				531AECEF1FD546F4007ED2DB /* RecipeViewController.swift */,
 				531AECF11FD5483B007ED2DB /* IngredientsTableViewCell.swift */,
+				53B5FDFF1FD7C7AC00DEC29D /* LaunchScreenViewController.swift */,
 				5320A0D61FD12021005CA442 /* LaunchScreen.storyboard */,
 				5320A0D91FD12021005CA442 /* Info.plist */,
 				5320A0F81FD121F9005CA442 /* Assets.xcassets */,
@@ -208,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53B5FE001FD7C7AC00DEC29D /* LaunchScreenViewController.swift in Sources */,
 				531AECF21FD5483B007ED2DB /* IngredientsTableViewCell.swift in Sources */,
 				5320A0CB1FD12021005CA442 /* AppDelegate.swift in Sources */,
 				5320A0EC1FD12075005CA442 /* AddListTableCellDelegate.swift in Sources */,
