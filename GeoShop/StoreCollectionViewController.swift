@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import MapKit
 import MobileCoreServices
+import MessageUI
 
 class StoreCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ListTableViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIViewControllerPreviewingDelegate {
     
@@ -186,14 +187,6 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
         if let storeObject = stores?[storeIndex] {
             storeObject.removeFromCore()
         }
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let managedContext = appDelegate.persistentContainer.viewContext
-//        managedContext.delete((stores?.remove(at: storeIndex))!)
-//        do {
-//            try managedContext.save()
-//        } catch let error as NSError{
-//            print("Failed to save delete. Error: \(error)")
-//        }
         storeCollectionView.reloadData()
     }
     

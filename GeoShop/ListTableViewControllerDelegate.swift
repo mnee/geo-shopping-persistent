@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MessageUI
 
 protocol ListTableViewControllerDelegate: class {
     func itemAddedToBeSaved(withTitle itemName: String, in storeIndex: Int)

@@ -11,21 +11,53 @@ import MessageUI
 
 class ListTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddListTableCellDelegate, MFMessageComposeViewControllerDelegate {
     
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
     var itemsInList: [String]?
     
     weak var delegate: ListTableViewControllerDelegate?
     var storeIndexInCollection: Int?
     
+    // MARK: Table View Functions
     @IBOutlet weak var listTable: UITableView! {
         didSet {
             listTable.delegate = self
             listTable.dataSource = self
         }
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return itemsInList!.count+1 // +1 for add cell first
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.item == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewListItem", for: indexPath)
+            if let newListCell = cell as? AddListTableCell {
+                newListCell.delegate = self
+            }
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TableListItem", for: indexPath)
+            if let tableListCell = cell as? ListTableViewCell {
+                tableListCell.itemName.text = itemsInList![indexPath.item-1]
+            }
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.item != 0
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if itemsInList?.remove(at: indexPath.item-1) != nil {
+                delegate?.itemDeletedToBeSaved(at: indexPath.item - 1, in: storeIndexInCollection ?? 0)
+                listTable.reloadData()
+            }
+        }
+    }
+    
+    // MARK: MessageUI Functions
     
     @IBAction func sendText(_ sender: UIBarButtonItem) {
         if let messageVC = getTextMessageVC() {
@@ -34,7 +66,7 @@ class ListTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func getTextMessageVC() -> MFMessageComposeViewController? {
-        if (MFMessageComposeViewController.canSendText()) {
+        if MFMessageComposeViewController.canSendText() {
             let messageVC = MFMessageComposeViewController()
             messageVC.messageComposeDelegate = self
             
@@ -57,108 +89,25 @@ class ListTableViewController: UIViewController, UITableViewDelegate, UITableVie
         return nil
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemsInList!.count+1 // +1 for add cell first
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.item == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NewListItem", for: indexPath)
-            if let newListCell = cell as? AddListTableCell {
-                newListCell.delegate = self
-            }
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TableListItem", for: indexPath)
-            if let tableListCell = cell as? ListTableViewCell {
-                tableListCell.itemName.text = itemsInList![indexPath.item-1]
-            }
-            
-            return cell
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.item != 0
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            if itemsInList?.remove(at: indexPath.item-1) != nil {
-                delegate?.itemDeletedToBeSaved(at: indexPath.item - 1, in: storeIndexInCollection ?? 0)
-                listTable.reloadData()
-            }
-        }
-    }
-    
+    // MARK: AddListTableCellDelegate function
     func didSelectToBeAdded(with textToAdd: String) {
         itemsInList?.append(textToAdd)
         listTable.reloadData()
         delegate?.itemAddedToBeSaved(withTitle: textToAdd, in: storeIndexInCollection ?? 0)
     }
     
+    // MARK: ActionItems
     override var previewActionItems: [UIPreviewActionItem] {
         get {
-            let share = UIPreviewAction(title: "Share", style: .default) { (action, vc) in
-                if let messageVC = self.getTextMessageVC() {
-                    self.parent?.present(messageVC, animated: true, completion: nil)
-                }
-            }
             let delete = UIPreviewAction(title: "Delete", style: .destructive) { (action, vc) in
                 self.delegate?.storeDeleted(self.storeIndexInCollection!)
             }
-            return [share, delete]
+            return [delete]
         }
     }
-
-    // MARK: - Table view data source
-
-    
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
