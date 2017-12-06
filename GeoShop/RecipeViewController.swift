@@ -35,21 +35,27 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var instructionsText: String?
     var prepTimeText: String?
     var recipeID: Int?
+    var recipeIndexInList: Int?
+    
+    var delegate: RecipeViewControllerDelegate?
     
     override var previewActionItems: [UIPreviewActionItem] {
         get {
             let print = UIPreviewAction(title: "Print", style: .default) { (action, vc) in
                 self.executeAirPrint()
             }
-            let notif = UIPreviewAction(title: "Schedule Meal", style: .default) { (action, vc) in
-                //
-            }
+//            let notif = UIPreviewAction(title: "Schedule Meal", style: .default) { (action, vc) in
+//                if let datePickerVC = self.storyboard?.instantiateViewController(withIdentifier: "DatePicker") as? DateSelectionViewController {
+//                    self.present(datePickerVC, animated: true, completion: nil)
+//                }
+//
+//            }
             let ingreds = UIPreviewActionGroup(title: "Add Ingredients", style: .default, actions: getIngredientActions())
             
             let delete = UIPreviewAction(title: "Delete", style: .destructive) { (action, vc) in
-                //
+                self.delegate?.deleteRecipe(at: self.recipeIndexInList!)
             }
-            return [print, notif, ingreds, delete]
+            return [print, ingreds, delete]
         }
     }
     

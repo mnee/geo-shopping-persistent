@@ -32,6 +32,8 @@
 		5320A1051FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */; };
 		539E34E71FD52F36001033D4 /* RecipeSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */; };
 		53B5FE001FD7C7AC00DEC29D /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5FDFF1FD7C7AC00DEC29D /* LaunchScreenViewController.swift */; };
+		53B5FE021FD7F97700DEC29D /* DateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5FE011FD7F97700DEC29D /* DateSelectionViewController.swift */; };
+		53B5FE041FD7FE4500DEC29D /* RecipeViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5FE031FD7FE4500DEC29D /* RecipeViewControllerDelegate.swift */; };
 		53C05D511FD542F9005B61AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53C05D501FD542F9005B61AE /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,8 @@
 		5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePopoverViewControllerDelegate.swift; sourceTree = "<group>"; };
 		539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSplitViewController.swift; sourceTree = "<group>"; };
 		53B5FDFF1FD7C7AC00DEC29D /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		53B5FE011FD7F97700DEC29D /* DateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionViewController.swift; sourceTree = "<group>"; };
+		53B5FE031FD7FE4500DEC29D /* RecipeViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewControllerDelegate.swift; sourceTree = "<group>"; };
 		53C05D501FD542F9005B61AE /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,8 +120,10 @@
 				5320A1021FD50601005CA442 /* RecipePopoverViewController.swift */,
 				5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */,
 				539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */,
+				53B5FE031FD7FE4500DEC29D /* RecipeViewControllerDelegate.swift */,
 				531AECEF1FD546F4007ED2DB /* RecipeViewController.swift */,
 				531AECF11FD5483B007ED2DB /* IngredientsTableViewCell.swift */,
+				53B5FE011FD7F97700DEC29D /* DateSelectionViewController.swift */,
 				53B5FDFF1FD7C7AC00DEC29D /* LaunchScreenViewController.swift */,
 				5320A0D61FD12021005CA442 /* LaunchScreen.storyboard */,
 				5320A0D91FD12021005CA442 /* Info.plist */,
@@ -212,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53B5FE001FD7C7AC00DEC29D /* LaunchScreenViewController.swift in Sources */,
+				53B5FE041FD7FE4500DEC29D /* RecipeViewControllerDelegate.swift in Sources */,
 				531AECF21FD5483B007ED2DB /* IngredientsTableViewCell.swift in Sources */,
 				5320A0CB1FD12021005CA442 /* AppDelegate.swift in Sources */,
 				5320A0EC1FD12075005CA442 /* AddListTableCellDelegate.swift in Sources */,
@@ -224,6 +231,7 @@
 				5320A0E51FD1206A005CA442 /* StoreCollectionViewCell.swift in Sources */,
 				5320A1031FD50601005CA442 /* RecipePopoverViewController.swift in Sources */,
 				5320A0ED1FD12075005CA442 /* ListTableViewController.swift in Sources */,
+				53B5FE021FD7F97700DEC29D /* DateSelectionViewController.swift in Sources */,
 				5320A0D31FD12021005CA442 /* GeoShop.xcdatamodeld in Sources */,
 				5320A0E41FD1206A005CA442 /* StoreList.swift in Sources */,
 				5320A0EE1FD12075005CA442 /* ListTableViewCell.swift in Sources */,

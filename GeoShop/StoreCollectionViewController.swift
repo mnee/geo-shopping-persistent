@@ -82,6 +82,11 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
         registerForPreviewing(with: self, sourceView: storeCollectionView)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        storeCollectionView.reloadData()
+    }
+    
     var flowLayout: UICollectionViewFlowLayout? {
         return storeCollectionView?.collectionViewLayout as? UICollectionViewFlowLayout
     }
@@ -141,9 +146,9 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
                 listVC.storeIndexInCollection = stores?.index(of: (sender as? NSManagedObject)!)
             }
         } else if segue.identifier == "DisplayMap" {
-            if let mapVC = segue.destination.contents as? MapViewController {
-                // TODO: Add in already made stores
-            }
+//            if let mapVC = segue.destination.contents as? MapViewController {
+//                // TODO: Add in already made stores
+//            }
         }
     }
     

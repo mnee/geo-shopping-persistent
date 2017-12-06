@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RecipePopoverViewControllerDelegate, UIViewControllerPreviewingDelegate {
+class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RecipePopoverViewControllerDelegate, UIViewControllerPreviewingDelegate, RecipeViewControllerDelegate {
     
     var recipes: [NSManagedObject]?
     var recipeID: NSManagedObject?
@@ -139,6 +139,8 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
                     recipeFocusVC.instructionsText = (recipeData.value(forKey: "prepInstructions") as! String)
                     recipeFocusVC.prepTimeText = "Prep Time: \(recipeData.value(forKey: "prepTime") as! Int) minutes"
                     recipeFocusVC.recipeNameText = recipeData.value(forKey: "recipeName") as? String
+                    recipeFocusVC.recipeIndexInList = recipes?.index(of: recipeData)
+                    recipeFocusVC.delegate = self
                     
                     if let imageURL = recipeData.value(forKey: "imageURL") as? String {
                         recipeFocusVC.recipeID = Int(imageURL.dropFirst(6)) // Ex. pulls 7 off Recipe7
@@ -164,6 +166,7 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     // 3D Touch
+    // TODO: Merge functions
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         if let indexPath = recipeTable.indexPathForRow(at: location), let recipeData = recipes?[indexPath.item] {
             let previewVC = storyboard?.instantiateViewController(withIdentifier: "RecipeView")
@@ -172,6 +175,8 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
                 recipeFocusVC.instructionsText = (recipeData.value(forKey: "prepInstructions") as! String)
                 recipeFocusVC.prepTimeText = "Prep Time: \(recipeData.value(forKey: "prepTime") as! Int) minutes"
                 recipeFocusVC.recipeNameText = recipeData.value(forKey: "recipeName") as? String
+                recipeFocusVC.recipeIndexInList = recipes?.index(of: recipeData)
+                recipeFocusVC.delegate = self
                 
                 if let imageURL = recipeData.value(forKey: "imageURL") as? String {
                     recipeFocusVC.recipeID = Int(imageURL.dropFirst(6)) // Ex. pulls 7 off Recipe7
@@ -195,6 +200,13 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
         show(viewControllerToCommit, sender: nil)
     }
 
+    func deleteRecipe(at index: Int) {
+        if let recipe = recipes?.remove(at: index) {
+            recipe.removeFromCore()
+            recipeTable.reloadData()
+        }
+        
+    }
 }
 
 extension NSManagedObject {
