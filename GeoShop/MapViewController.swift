@@ -167,7 +167,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             content.body = "You're passing near \(storeAnnotation.title!!) now!"
             content.sound = UNNotificationSound.default()
             
-            let region = CLCircularRegion(center: storeAnnotation.coordinate, radius: 1000.0, identifier: storeAnnotation.title!!)
+            let region = CLCircularRegion(center: storeAnnotation.coordinate, radius: 100.0, identifier: storeAnnotation.title!!)
             region.notifyOnEntry = true
             region.notifyOnExit = false
             //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)

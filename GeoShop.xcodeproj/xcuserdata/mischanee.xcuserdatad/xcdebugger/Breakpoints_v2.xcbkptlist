@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoShop/StoreCollectionViewController.swift"
-            timestampString = "534209750.083473"
+            timestampString = "534212304.220055"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "204"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoShop/RecipeTableViewController.swift"
-            timestampString = "534209750.084568"
+            timestampString = "534212304.223221"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoShop/RecipeTableViewController.swift"
-            timestampString = "534209750.084845"
+            timestampString = "534212304.225491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoShop/RecipeTableViewController.swift"
-            timestampString = "534209750.0849"
+            timestampString = "534212304.226166"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "162"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoShop/RecipeTableViewController.swift"
-            timestampString = "534209750.085046"
+            timestampString = "534212304.227298"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoShop/RecipeTableViewController.swift"
-            timestampString = "534209750.085138"
+            timestampString = "534212304.227999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -164,13 +164,93 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoShop/StoreCollectionViewController.swift"
-            timestampString = "534209750.085228"
+            timestampString = "534212304.228719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
             endingLineNumber = "18"
             landmarkName = "stores"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoShop/ListTableViewController.swift"
+            timestampString = "534212304.229379"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "previewActionItems"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoShop/ListTableViewController.swift"
+            timestampString = "534212304.232897"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "getTextMessageVC()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoShop/ListTableViewController.swift"
+            timestampString = "534212304.234108"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "getTextMessageVC()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoShop.ListTableViewController.getTextMessageVC() -&gt; Swift.Optional&lt;__ObjC.MFMessageComposeViewController&gt;"
+                  moduleName = "GeoShop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mischanee/Documents/geo-shopping-persistent/GeoShop/ListTableViewController.swift"
+                  timestampString = "534212173.681199"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "1380">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #1 : @autoclosure () throws -&gt; Swift.String in GeoShop.ListTableViewController.getTextMessageVC() -&gt; Swift.Optional&lt;__ObjC.MFMessageComposeViewController&gt;"
+                  moduleName = "GeoShop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mischanee/Documents/geo-shopping-persistent/GeoShop/ListTableViewController.swift"
+                  timestampString = "534212173.683872"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

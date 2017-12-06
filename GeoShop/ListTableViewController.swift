@@ -28,6 +28,12 @@ class ListTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func sendText(_ sender: UIBarButtonItem) {
+        if let messageVC = getTextMessageVC() {
+            self.present(messageVC, animated: true, completion: nil)
+        }
+    }
+    
+    func getTextMessageVC() -> MFMessageComposeViewController? {
         if (MFMessageComposeViewController.canSendText()) {
             let messageVC = MFMessageComposeViewController()
             messageVC.messageComposeDelegate = self
@@ -46,9 +52,9 @@ class ListTableViewController: UIViewController, UITableViewDelegate, UITableVie
                 messageVC.body = messageBody + " from \(self.title ?? "the store")."
             }
             messageVC.recipients = []
-            
-            self.present(messageVC, animated: true, completion: nil)
+            return messageVC
         }
+        return nil
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,10 +99,15 @@ class ListTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override var previewActionItems: [UIPreviewActionItem] {
         get {
+            let share = UIPreviewAction(title: "Share", style: .default) { (action, vc) in
+                if let messageVC = self.getTextMessageVC() {
+                    self.parent?.present(messageVC, animated: true, completion: nil)
+                }
+            }
             let delete = UIPreviewAction(title: "Delete", style: .destructive) { (action, vc) in
                 self.delegate?.storeDeleted(self.storeIndexInCollection!)
             }
-            return [delete]
+            return [share, delete]
         }
     }
 
