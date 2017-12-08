@@ -50,8 +50,7 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
             cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         }
     }
-    
-    // TODO: Fix aspect ratio, image stretching
+
     @IBAction func selectBackground(_ sender: UIBarButtonItem) {
         let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
@@ -116,12 +115,10 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = storeCollectionView.dequeueReusableCell(withReuseIdentifier: "StoreCollectionViewCell", for: indexPath)
         if let storeCell = cell as? StoreCollectionViewCell {
-            // TODO: Fix to ensure title fits
             
             let store = stores![indexPath.item] // Force unwrap because guaranteed to be populated
             storeCell.storeName.text = store.value(forKey: "storeName") as? String
             
-            // TODO: Fix to get proper count after adding and pressing back
             let numItems = (store.value(forKey: "storeItemList") as? [String])?.count
             storeCell.itemsNeededText.text = "\(numItems ?? 0) Items Needed"
             let tap = UITapGestureRecognizer(target: self, action: #selector(selectStoreList(_:)))
@@ -158,10 +155,6 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
                 listVC.delegate = self
                 listVC.storeIndexInCollection = stores?.index(of: (sender as? NSManagedObject)!)
             }
-        } else if segue.identifier == "DisplayMap" {
-//            if let mapVC = segue.destination.contents as? MapViewController {
-//                // TODO: Add in already made stores
-//            }
         }
     }
     

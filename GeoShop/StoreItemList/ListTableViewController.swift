@@ -58,7 +58,6 @@ class ListTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     // MARK: MessageUI Functions
-    
     @IBAction func sendText(_ sender: UIBarButtonItem) {
         if let messageVC = getTextMessageVC() {
             self.present(messageVC, animated: true, completion: nil)

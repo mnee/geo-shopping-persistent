@@ -22,6 +22,10 @@ class DateSelectionViewController: UIViewController {
     }
     @IBOutlet weak var datePicker: UIDatePicker!
     
+   
+    @IBAction func cancelDateSelection(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     // With some help from https://www.youtube.com/watch?v=sSFzcvvs4Oc
     @IBAction func confirmDate(_ sender: UIButton) {
         let date = datePicker.date

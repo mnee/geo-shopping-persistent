@@ -68,7 +68,6 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @objc func selectRecipe(_ sender: UITapGestureRecognizer) {
-        // TODO: Segue to a recipe viewer VC
         if sender.state == UIGestureRecognizerState.ended, let recipeCell = sender.view as? RecipeTableViewCell {
             if let indexPath = recipeTable.indexPath(for: recipeCell) {
                 performSegue(withIdentifier: "showDetail", sender: recipes![indexPath.item])

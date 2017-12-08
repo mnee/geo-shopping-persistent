@@ -107,32 +107,15 @@
 		5320A0C91FD12021005CA442 /* GeoShop */ = {
 			isa = PBXGroup;
 			children = (
-				5320A0CA1FD12021005CA442 /* AppDelegate.swift */,
 				5320A0E21FD1206A005CA442 /* MapViewController.swift */,
-				5320A0E11FD1206A005CA442 /* StoreCollectionViewCell.swift */,
-				5320A0DF1FD12069005CA442 /* StoreCollectionViewController.swift */,
-				5320A0E01FD12069005CA442 /* StoreList.swift */,
-				5320A0E71FD12074005CA442 /* AddListTableCell.swift */,
-				5320A0E81FD12074005CA442 /* AddListTableCellDelegate.swift */,
-				5320A0EA1FD12075005CA442 /* ListTableViewCell.swift */,
-				5320A0E91FD12075005CA442 /* ListTableViewController.swift */,
-				5320A0FA1FD12637005CA442 /* ListTableViewControllerDelegate.swift */,
-				5320A0FE1FD4F2B1005CA442 /* RecipeTableViewCell.swift */,
-				5320A1001FD4F55F005CA442 /* RecipeTableViewController.swift */,
-				5320A1021FD50601005CA442 /* RecipePopoverViewController.swift */,
-				5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */,
-				539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */,
-				53B5FE031FD7FE4500DEC29D /* RecipeViewControllerDelegate.swift */,
-				531AECEF1FD546F4007ED2DB /* RecipeViewController.swift */,
-				531AECF11FD5483B007ED2DB /* IngredientsTableViewCell.swift */,
-				53B5FE011FD7F97700DEC29D /* DateSelectionViewController.swift */,
-				53B5FDFF1FD7C7AC00DEC29D /* LaunchScreenViewController.swift */,
-				5320A0D61FD12021005CA442 /* LaunchScreen.storyboard */,
-				5320A0D91FD12021005CA442 /* Info.plist */,
-				5320A0F81FD121F9005CA442 /* Assets.xcassets */,
-				53775AE71FDA1E5B00BCD037 /* NowWeAreFree.mp3 */,
-				5320A0D11FD12021005CA442 /* GeoShop.xcdatamodeld */,
 				53C05D501FD542F9005B61AE /* Main.storyboard */,
+				53B5FDFF1FD7C7AC00DEC29D /* LaunchScreenViewController.swift */,
+				533990251FDA394C0070A1C3 /* StoreCollection */,
+				533990261FDA39640070A1C3 /* StoreItemList */,
+				533990271FDA39950070A1C3 /* RecipeViews */,
+				533990281FDA39C40070A1C3 /* Supporting Files */,
+				5320A0D11FD12021005CA442 /* GeoShop.xcdatamodeld */,
+				5320A0D91FD12021005CA442 /* Info.plist */,
 			);
 			path = GeoShop;
 			sourceTree = "<group>";
@@ -146,6 +129,55 @@
 				5320A0F21FD120FC005CA442 /* CoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		533990251FDA394C0070A1C3 /* StoreCollection */ = {
+			isa = PBXGroup;
+			children = (
+				5320A0E11FD1206A005CA442 /* StoreCollectionViewCell.swift */,
+				5320A0DF1FD12069005CA442 /* StoreCollectionViewController.swift */,
+				5320A0E01FD12069005CA442 /* StoreList.swift */,
+			);
+			path = StoreCollection;
+			sourceTree = "<group>";
+		};
+		533990261FDA39640070A1C3 /* StoreItemList */ = {
+			isa = PBXGroup;
+			children = (
+				5320A0E71FD12074005CA442 /* AddListTableCell.swift */,
+				5320A0E81FD12074005CA442 /* AddListTableCellDelegate.swift */,
+				5320A0EA1FD12075005CA442 /* ListTableViewCell.swift */,
+				5320A0E91FD12075005CA442 /* ListTableViewController.swift */,
+				5320A0FA1FD12637005CA442 /* ListTableViewControllerDelegate.swift */,
+			);
+			path = StoreItemList;
+			sourceTree = "<group>";
+		};
+		533990271FDA39950070A1C3 /* RecipeViews */ = {
+			isa = PBXGroup;
+			children = (
+				5320A0FE1FD4F2B1005CA442 /* RecipeTableViewCell.swift */,
+				5320A1001FD4F55F005CA442 /* RecipeTableViewController.swift */,
+				539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */,
+				531AECEF1FD546F4007ED2DB /* RecipeViewController.swift */,
+				53B5FE031FD7FE4500DEC29D /* RecipeViewControllerDelegate.swift */,
+				5320A1021FD50601005CA442 /* RecipePopoverViewController.swift */,
+				5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */,
+				531AECF11FD5483B007ED2DB /* IngredientsTableViewCell.swift */,
+				53B5FE011FD7F97700DEC29D /* DateSelectionViewController.swift */,
+			);
+			path = RecipeViews;
+			sourceTree = "<group>";
+		};
+		533990281FDA39C40070A1C3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5320A0F81FD121F9005CA442 /* Assets.xcassets */,
+				5320A0D61FD12021005CA442 /* LaunchScreen.storyboard */,
+				5320A0CA1FD12021005CA442 /* AppDelegate.swift */,
+				53775AE71FDA1E5B00BCD037 /* NowWeAreFree.mp3 */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

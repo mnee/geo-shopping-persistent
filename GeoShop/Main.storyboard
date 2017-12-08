@@ -738,7 +738,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzA-ml-mHP">
                                         <rect key="frame" x="10" y="298" width="48" height="30"/>
                                         <state key="normal" title="Cancel">
-                                            <color key="titleColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="cancelPopover:" destination="BX7-Gn-FcT" eventType="touchUpInside" id="oul-9p-GrZ"/>
@@ -816,35 +816,51 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTT-vX-Kl8">
-                                <rect key="frame" x="37" y="227" width="300" height="183"/>
+                                <rect key="frame" x="47.5" y="227" width="279" height="183"/>
                                 <subviews>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="lJ9-dv-1q9">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="145"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="279" height="145"/>
                                         <date key="date" timeIntervalSinceReferenceDate="534246926.77832502">
                                             <!--2017-12-06 09:55:26 +0000-->
                                         </date>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpA-4B-mOp">
-                                        <rect key="frame" x="100" y="145" width="100" height="30"/>
+                                        <rect key="frame" x="30" y="145" width="100" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="YSa-SC-L82"/>
                                             <constraint firstAttribute="width" constant="100" id="wSf-4f-MYP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelDateSelection:" destination="Ybb-fq-aen" eventType="touchUpInside" id="vSg-4g-edT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iir-5L-cJO">
+                                        <rect key="frame" x="149" y="145" width="100" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="GPP-5s-yzW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <state key="normal" title="Confirm"/>
                                         <connections>
-                                            <action selector="confirmDate:" destination="Ybb-fq-aen" eventType="touchUpInside" id="bun-qD-o7U"/>
+                                            <action selector="confirmDate:" destination="Ybb-fq-aen" eventType="touchUpInside" id="IAF-oU-mth"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="IpA-4B-mOp" firstAttribute="leading" secondItem="BTT-vX-Kl8" secondAttribute="leading" constant="100" id="GHO-TB-47g"/>
+                                    <constraint firstItem="iir-5L-cJO" firstAttribute="leading" secondItem="IpA-4B-mOp" secondAttribute="trailing" constant="19" id="5cZ-Kc-FCo"/>
+                                    <constraint firstAttribute="trailing" secondItem="iir-5L-cJO" secondAttribute="trailing" constant="30" id="7kN-HJ-Ciz"/>
+                                    <constraint firstItem="IpA-4B-mOp" firstAttribute="leading" secondItem="BTT-vX-Kl8" secondAttribute="leading" constant="30" id="GHO-TB-47g"/>
                                     <constraint firstItem="lJ9-dv-1q9" firstAttribute="top" secondItem="BTT-vX-Kl8" secondAttribute="top" id="L6D-l4-EWh"/>
                                     <constraint firstAttribute="trailing" secondItem="lJ9-dv-1q9" secondAttribute="trailing" id="NGO-ay-pFq"/>
                                     <constraint firstAttribute="bottom" secondItem="IpA-4B-mOp" secondAttribute="bottom" constant="8" id="Q2S-rD-s9a"/>
+                                    <constraint firstItem="iir-5L-cJO" firstAttribute="top" secondItem="lJ9-dv-1q9" secondAttribute="bottom" id="WKV-aR-rWZ"/>
+                                    <constraint firstItem="IpA-4B-mOp" firstAttribute="width" secondItem="iir-5L-cJO" secondAttribute="width" id="WyT-Wb-Ulm"/>
                                     <constraint firstItem="lJ9-dv-1q9" firstAttribute="leading" secondItem="BTT-vX-Kl8" secondAttribute="leading" id="d5X-ax-8BP"/>
-                                    <constraint firstItem="IpA-4B-mOp" firstAttribute="centerX" secondItem="BTT-vX-Kl8" secondAttribute="centerX" id="hY9-5G-uYN"/>
                                     <constraint firstItem="IpA-4B-mOp" firstAttribute="top" secondItem="lJ9-dv-1q9" secondAttribute="bottom" id="qgr-vl-l6z"/>
                                 </constraints>
                             </view>

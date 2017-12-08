@@ -133,12 +133,5 @@ class RecipePopoverViewController: UIViewController, UIImagePickerControllerDele
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.presentingViewController?.dismiss(animated: true, completion: nil)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.layer.cornerRadius = 10.0
-        view.layer.masksToBounds = true
-        // Do any additional setup after loading the view.
-    }
 
 }

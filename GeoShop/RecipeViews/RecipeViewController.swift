@@ -86,12 +86,6 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     // Airprint help from: https://www.youtube.com/watch?v=NAmj9v-CBGg
-//    @IBAction func scheduleMeal(_ sender: UIBarButtonItem) {
-//        if let datePickerVC = storyboard?.instantiateViewController(withIdentifier: "DatePicker") as? DateSelectionViewController {
-//            present(datePickerVC, animated: true, completion: nil)
-//        }
-//    }
-    
     func executeAirPrint() {
         let printController = UIPrintInteractionController.shared
         let printInfo = UIPrintInfo(dictionary: nil)

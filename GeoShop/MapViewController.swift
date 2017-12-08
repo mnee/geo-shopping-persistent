@@ -11,25 +11,14 @@ import MapKit
 import CoreLocation
 import CoreData
 import UserNotifications
+import AudioToolbox
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    // TODO: Initialize with previous selection on reverse seg
     var selectedStores: [MKAnnotation] = []
-    
-    /*var dataForStores: [StoreList] {
-        get {
-            var dataForStoresToReturn: [StoreList] = []
-            for storeAnnotation in selectedStores {
-                let store = StoreList(url: URL(string: "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=\(storeAnnotation.coordinate.latitude),\(storeAnnotation.coordinate.longitude)&key=AIzaSyAmX40dcbk2dP5oSkQCrMriWc3QNRt-KOc")!, storeName: storeAnnotation.title!!, storeItemList: ["Toothpaste", "Soap", "Deodorant", "Wine"])
-                dataForStoresToReturn.append(store)
-            }
-            return dataForStoresToReturn
-        }
-    }*/
-    
+
     var locationManager = CLLocationManager()
     var userLocation: CLLocation?
     
@@ -40,7 +29,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         super.viewDidLoad()
         mapView.delegate = self
         
-        if CLLocationManager.locationServicesEnabled() {    // Is this if necessary?
+        if CLLocationManager.locationServicesEnabled() {
             locationManager.requestAlwaysAuthorization()
             locationManager.requestWhenInUseAuthorization()
             locationManager.delegate = self
@@ -53,14 +42,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapView.isScrollEnabled = true
     }
     
-    var setLocation = true
-    // BUGGY: Won't allow scrolling because constantly resetting
-    // TempFix: Bool for first get of userLocation
+    // Bool to avoid constantly resetting location and cause glitches when user scrolls or interacts with map
+    var haveSetLocation = true
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if setLocation {
+        if haveSetLocation {
             userLocation = locations[0]
             mapView.region = mapView.regionThatFits(MKCoordinateRegion(center: userLocation!.coordinate, span: defaultSpan))
-            setLocation = false
+            haveSetLocation = false
         }
     }
 
@@ -91,7 +79,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         let activeSearch = MKLocalSearch(request: searchRequest)
         
-        // TODO: Check for weak self
         activeSearch.start { (response, error) in
             activityIndicator.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
@@ -107,17 +94,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         annotation.coordinate = item.placemark.coordinate
                         self.mapView.addAnnotation(annotation)
                     }
-                    self.mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2D(latitude: (response?.boundingRegion.center.latitude)!, longitude: (response?.boundingRegion.center.longitude)!), MKCoordinateSpan(latitudeDelta: 0.06, longitudeDelta: 0.06)), animated: true) // TODO: Optimize so that the span fits all annotations in view
+                    self.mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2D(latitude: (response?.boundingRegion.center.latitude)!, longitude: (response?.boundingRegion.center.longitude)!), MKCoordinateSpan(latitudeDelta: 0.06, longitudeDelta: 0.06)), animated: true)
                     
-                    // Reveal buttons for selection
-                    // TODO: Animate slide in
                     self.addStoreButton.isHidden = false
                 }
             }
         }
     }
     
-    // Hide both buttons on load
     @IBOutlet weak var addStoreButton: UIButton! {
         didSet {
             addStoreButton.isHidden = true
@@ -125,8 +109,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     @IBOutlet weak var doneButton: UIButton!
     
-    // TODO: Add animation to indicate store was added
     @IBAction func addStoreClicked(_ sender: UIButton) {
+        if mapView.selectedAnnotations.count == 0 { return } // Guards against error when button clicked with no annotations selected
         let storeAnnotation = mapView.selectedAnnotations[0]
         
         // Citation: For getting the managed context helped by https://www.youtube.com/watch?v=TW_jcvVvPwI
@@ -141,14 +125,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         do {
             try managedContext.save()
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         } catch let error as NSError {
             print("Failed to save data. Error: \(error)")
         }
         selectedStores.append(mapView.selectedAnnotations[0])
         mapView.removeAnnotations(mapView.annotations)
-        // TODO: Fix error that can reselect and add a store
         mapView.addAnnotations(selectedStores)
-        // Consider resetting location?
         
         let unCenter = UNUserNotificationCenter.current()
         
@@ -170,7 +153,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             let region = CLCircularRegion(center: storeAnnotation.coordinate, radius: 500.0, identifier: storeAnnotation.title!!)
             region.notifyOnEntry = true
             region.notifyOnExit = false
-            //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
             let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
             
             let request = UNNotificationRequest(identifier: "\(storeAnnotation.title!!) location notif ", content: content, trigger: trigger)
@@ -181,14 +163,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 }
             }
         }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        /*if segue.identifier == "DisplayStoreLists" {
-            if let storeCollectionVC = segue.destination.contents as? StoreCollectionViewController {
-                storeCollectionVC.stores = dataForStores
-            }
-        }*/
     }
     
 }

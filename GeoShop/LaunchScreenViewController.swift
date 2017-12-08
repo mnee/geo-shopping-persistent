@@ -14,6 +14,7 @@ class LaunchScreenViewController: UIViewController {
 
     @IBOutlet weak var backgroundImage: UIImageView!
     
+    // Segue set from continue button to StoreCollectionVC in storyboard
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var logo: UIImageView!
     
@@ -43,34 +44,12 @@ class LaunchScreenViewController: UIViewController {
                         myContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: myLocalizedReasonString) { success, evaluateError in
                             if success {
                                 self.performSegue(withIdentifier: "unlockApp", sender: nil)
-                            } else {
-                                // User did not authenticate successfully, look at error and take appropriate action
                             }
                         }
-                    } else {
-                        // Could not evaluate policy; look at authError and present an appropriate message to user
                     }
-                } else {
-                    // Fallback on earlier versions
                 }
             }
         })
         
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
