@@ -8,10 +8,12 @@
 
 import UIKit
 import EventKit
+import UserNotifications
 
 class DateSelectionViewController: UIViewController {
 
     var recipeName: String?
+    var itemNeeded: String?
     @IBOutlet weak var dateView: UIView! {
         didSet {
             dateView.layer.cornerRadius = 5.0
@@ -57,29 +59,39 @@ class DateSelectionViewController: UIViewController {
                 }
             }
         }
-        
+        addNotification(on: date)
         dismiss(animated: true, completion: nil)
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func addNotification(on date: Date) {
+        let unCenter = UNUserNotificationCenter.current()
+        
+        var userNotifsAllowed = true
+        unCenter.getNotificationSettings { (settings) in
+            if settings.authorizationStatus != .authorized {
+                unCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+                    userNotifsAllowed = granted
+                }
+            }
+        }
+        
+        if userNotifsAllowed {
+            let content = UNMutableNotificationContent()
+            content.title = "You're making \(recipeName!) tomorrow!"
+            content.body = "Did you remember to pick up \(itemNeeded ?? "everything")?"
+            content.sound = UNNotificationSound.default()
+            
+            let interval = date.timeIntervalSinceNow - 86400
+            if interval <= 0 { return } // Do not schedule notif if less than a day away
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
+        
+            let request = UNNotificationRequest(identifier: date.description, content: content, trigger: trigger)
+            
+            unCenter.add(request) { (error: Error?) in
+                if error != nil {
+                    print("Failed to set notification. Error: \(error!)")
+                }
+            }
+        }
     }
-    */
-
 }

@@ -153,6 +153,7 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else if segue.identifier == "SelectDateForMeal" {
             if let dateSelectionVC = segue.destination as? DateSelectionViewController {
                 dateSelectionVC.recipeName = recipeNameText
+                dateSelectionVC.itemNeeded = ingredients?[0]
             }
         }
     }

@@ -30,6 +30,7 @@
 		5320A1011FD4F55F005CA442 /* RecipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A1001FD4F55F005CA442 /* RecipeTableViewController.swift */; };
 		5320A1031FD50601005CA442 /* RecipePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A1021FD50601005CA442 /* RecipePopoverViewController.swift */; };
 		5320A1051FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */; };
+		53775AE81FDA1E5C00BCD037 /* NowWeAreFree.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53775AE71FDA1E5B00BCD037 /* NowWeAreFree.mp3 */; };
 		539E34E71FD52F36001033D4 /* RecipeSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */; };
 		53B5FE001FD7C7AC00DEC29D /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5FDFF1FD7C7AC00DEC29D /* LaunchScreenViewController.swift */; };
 		53B5FE021FD7F97700DEC29D /* DateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5FE011FD7F97700DEC29D /* DateSelectionViewController.swift */; };
@@ -63,6 +64,7 @@
 		5320A1001FD4F55F005CA442 /* RecipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewController.swift; sourceTree = "<group>"; };
 		5320A1021FD50601005CA442 /* RecipePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePopoverViewController.swift; sourceTree = "<group>"; };
 		5320A1041FD52483005CA442 /* RecipePopoverViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePopoverViewControllerDelegate.swift; sourceTree = "<group>"; };
+		53775AE71FDA1E5B00BCD037 /* NowWeAreFree.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NowWeAreFree.mp3; sourceTree = "<group>"; };
 		539E34E61FD52F36001033D4 /* RecipeSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSplitViewController.swift; sourceTree = "<group>"; };
 		53B5FDFF1FD7C7AC00DEC29D /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		53B5FE011FD7F97700DEC29D /* DateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				5320A0D61FD12021005CA442 /* LaunchScreen.storyboard */,
 				5320A0D91FD12021005CA442 /* Info.plist */,
 				5320A0F81FD121F9005CA442 /* Assets.xcassets */,
+				53775AE71FDA1E5B00BCD037 /* NowWeAreFree.mp3 */,
 				5320A0D11FD12021005CA442 /* GeoShop.xcdatamodeld */,
 				53C05D501FD542F9005B61AE /* Main.storyboard */,
 			);
@@ -206,6 +209,7 @@
 			files = (
 				53C05D511FD542F9005B61AE /* Main.storyboard in Resources */,
 				5320A0F91FD121F9005CA442 /* Assets.xcassets in Resources */,
+				53775AE81FDA1E5C00BCD037 /* NowWeAreFree.mp3 in Resources */,
 				5320A0D81FD12021005CA442 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

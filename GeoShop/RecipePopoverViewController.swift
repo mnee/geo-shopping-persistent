@@ -12,6 +12,12 @@ import MobileCoreServices
 
 class RecipePopoverViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var recipeEditView: UIView! {
+        didSet {
+            recipeEditView.layer.cornerRadius = 5.0
+            recipeEditView.layer.masksToBounds = true
+        }
+    }
     @IBOutlet weak var recipeImage: UIImageView! {
         didSet {
             if image != nil {

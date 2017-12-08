@@ -11,6 +11,7 @@ import CoreData
 import MapKit
 import MobileCoreServices
 import MessageUI
+import AVFoundation
 
 class StoreCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ListTableViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIViewControllerPreviewingDelegate {
     
@@ -76,10 +77,22 @@ class StoreCollectionViewController: UIViewController, UICollectionViewDataSourc
         picker.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
+    var audioPlayer = AVAudioPlayer()
+    func playMusic() {
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "NowWeAreFree", ofType: "mp3")!))
+            audioPlayer.prepareToPlay()
+            audioPlayer.play()
+        } catch {
+            print("Failed to play music. Error: \(error)")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Shopping Lists"
         registerForPreviewing(with: self, sourceView: storeCollectionView)
+        playMusic()
     }
     
     override func viewDidAppear(_ animated: Bool) {

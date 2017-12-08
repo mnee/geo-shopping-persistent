@@ -641,15 +641,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UY5-N4-hEv">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5TE-pU-Zfc">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3py-vQ-cwS">
-                                <rect key="frame" x="16" y="64" width="343" height="334"/>
+                                <rect key="frame" x="16" y="152" width="343" height="334"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="pZ0-Qy-vEj">
                                         <rect key="frame" x="10" y="20" width="323" height="254"/>
@@ -761,11 +761,13 @@
                                     <constraint firstItem="jJS-US-Wwx" firstAttribute="top" secondItem="3py-vQ-cwS" secondAttribute="top" constant="48" id="JXq-Jg-7Cr"/>
                                     <constraint firstItem="P0Q-vW-Hyr" firstAttribute="leading" secondItem="3py-vQ-cwS" secondAttribute="leading" constant="140" id="Jns-n5-HEX"/>
                                     <constraint firstAttribute="bottom" secondItem="xLx-Y8-Jcd" secondAttribute="bottom" constant="6" id="QKk-Pe-IKF"/>
+                                    <constraint firstAttribute="width" constant="343" id="Rxl-mv-z9G"/>
                                     <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="pZ0-Qy-vEj" secondAttribute="bottom" priority="500" constant="60" id="WMt-ei-4JV"/>
                                     <constraint firstItem="LzA-ml-mHP" firstAttribute="leading" secondItem="3py-vQ-cwS" secondAttribute="leading" constant="10" id="aui-Kw-Yvu"/>
                                     <constraint firstItem="jJS-US-Wwx" firstAttribute="top" secondItem="P0Q-vW-Hyr" secondAttribute="bottom" constant="2" id="e9v-9r-Z3e"/>
                                     <constraint firstItem="pZ0-Qy-vEj" firstAttribute="top" secondItem="3py-vQ-cwS" secondAttribute="top" priority="500" constant="20" id="eBF-Ju-7bA"/>
                                     <constraint firstAttribute="trailing" secondItem="P0Q-vW-Hyr" secondAttribute="trailing" constant="16" id="ewM-mb-4Mx"/>
+                                    <constraint firstAttribute="height" constant="334" id="fVh-Kr-n8B"/>
                                     <constraint firstItem="P0Q-vW-Hyr" firstAttribute="top" secondItem="3py-vQ-cwS" secondAttribute="top" constant="20" id="nBq-H2-Fgj"/>
                                     <constraint firstAttribute="trailing" secondItem="pZ0-Qy-vEj" secondAttribute="trailing" constant="10" id="tlk-0i-wRy"/>
                                     <constraint firstItem="pZ0-Qy-vEj" firstAttribute="leading" secondItem="3py-vQ-cwS" secondAttribute="leading" constant="10" id="uRV-c3-zIp"/>
@@ -775,14 +777,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="3py-vQ-cwS" firstAttribute="leading" secondItem="vjI-sG-bCA" secondAttribute="leading" constant="16" id="5Bo-ri-Rur"/>
+                            <constraint firstItem="3py-vQ-cwS" firstAttribute="centerY" secondItem="vjI-sG-bCA" secondAttribute="centerY" id="0lI-j1-xRw"/>
                             <constraint firstItem="UY5-N4-hEv" firstAttribute="top" secondItem="vjI-sG-bCA" secondAttribute="top" id="BIC-dX-Twa"/>
-                            <constraint firstItem="vjI-sG-bCA" firstAttribute="bottom" secondItem="3py-vQ-cwS" secondAttribute="bottom" priority="750" constant="220" id="NuL-aY-xcu"/>
                             <constraint firstItem="UY5-N4-hEv" firstAttribute="leading" secondItem="vjI-sG-bCA" secondAttribute="leading" id="Y1i-2e-YK3"/>
+                            <constraint firstItem="3py-vQ-cwS" firstAttribute="centerX" secondItem="vjI-sG-bCA" secondAttribute="centerX" id="Ydj-JM-zad"/>
                             <constraint firstItem="UY5-N4-hEv" firstAttribute="bottom" secondItem="vjI-sG-bCA" secondAttribute="bottom" id="Z6G-XT-VAU"/>
-                            <constraint firstItem="vjI-sG-bCA" firstAttribute="trailing" secondItem="3py-vQ-cwS" secondAttribute="trailing" constant="16" id="r1p-hu-R0o"/>
                             <constraint firstItem="vjI-sG-bCA" firstAttribute="trailing" secondItem="UY5-N4-hEv" secondAttribute="trailing" id="twq-KI-DNl"/>
-                            <constraint firstItem="3py-vQ-cwS" firstAttribute="top" secondItem="vjI-sG-bCA" secondAttribute="top" id="ueo-od-BhH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vjI-sG-bCA"/>
                     </view>
@@ -790,6 +790,7 @@
                         <outlet property="ingredientsTF" destination="ogw-9g-bYl" id="juw-29-Bvn"/>
                         <outlet property="instructionsTF" destination="057-6g-O0S" id="AwO-G8-ZEv"/>
                         <outlet property="prepTimeTF" destination="Nld-75-TMA" id="jfI-8i-zI6"/>
+                        <outlet property="recipeEditView" destination="3py-vQ-cwS" id="fO1-fU-qYv"/>
                         <outlet property="recipeImage" destination="jJS-US-Wwx" id="ELv-5X-TnN"/>
                         <outlet property="recipeNameTF" destination="9lr-1X-uWH" id="TV1-2M-DIS"/>
                     </connections>
@@ -909,7 +910,7 @@
         <image name="second" width="18" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hNr-tE-R04"/>
+        <segue reference="C58-Hh-bGj"/>
         <segue reference="60n-dC-enF"/>
         <segue reference="2OO-7H-2rn"/>
     </inferredMetricsTieBreakers>
