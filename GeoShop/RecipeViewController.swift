@@ -44,12 +44,6 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let print = UIPreviewAction(title: "Print", style: .default) { (action, vc) in
                 self.executeAirPrint()
             }
-//            let notif = UIPreviewAction(title: "Schedule Meal", style: .default) { (action, vc) in
-//                if let datePickerVC = self.storyboard?.instantiateViewController(withIdentifier: "DatePicker") as? DateSelectionViewController {
-//                    self.present(datePickerVC, animated: true, completion: nil)
-//                }
-//
-//            }
             let ingreds = UIPreviewActionGroup(title: "Add Ingredients", style: .default, actions: getIngredientActions())
             
             let delete = UIPreviewAction(title: "Delete", style: .destructive) { (action, vc) in
@@ -92,9 +86,11 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     // Airprint help from: https://www.youtube.com/watch?v=NAmj9v-CBGg
-    @IBAction func printRecipe(_ sender: UIBarButtonItem) {
-        executeAirPrint()
-    }
+//    @IBAction func scheduleMeal(_ sender: UIBarButtonItem) {
+//        if let datePickerVC = storyboard?.instantiateViewController(withIdentifier: "DatePicker") as? DateSelectionViewController {
+//            present(datePickerVC, animated: true, completion: nil)
+//        }
+//    }
     
     func executeAirPrint() {
         let printController = UIPrintInteractionController.shared
@@ -153,6 +149,10 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     recipePopVC.recipeID = 0
                 }
                 recipePopVC.delegate = self
+            }
+        } else if segue.identifier == "SelectDateForMeal" {
+            if let dateSelectionVC = segue.destination as? DateSelectionViewController {
+                dateSelectionVC.recipeName = recipeNameText
             }
         }
     }
