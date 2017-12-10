@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import SafariServices
 
-class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RecipePopoverViewControllerDelegate, UIPrintInteractionControllerDelegate {
+class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RecipePopoverViewControllerDelegate, UIPrintInteractionControllerDelegate, SFSafariViewControllerDelegate {
     
     @IBOutlet weak var recipeName: UILabel! { didSet { recipeName.text = recipeNameText } }
     @IBOutlet weak var recipeImage: UIImageView! {
@@ -36,8 +37,19 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var prepTimeText: String?
     var recipeID: Int?
     var recipeIndexInList: Int?
+    var websiteURL: String?
     
     var delegate: RecipeViewControllerDelegate?
+    
+    @IBAction func viewWebsite(_ sender: Any) {
+        if websiteURL != nil {
+            if let url = URL(string: websiteURL!) {
+                let safariVC = SFSafariViewController(url: url)
+                safariVC.delegate = self
+                present(safariVC, animated: true, completion: nil)
+            }
+        }
+    }
     
     override var previewActionItems: [UIPreviewActionItem] {
         get {
@@ -127,6 +139,7 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditRecipe" {
             if let recipePopVC = segue.destination as? RecipePopoverViewController {
+                recipePopVC.title = ""
                 if recipeID != nil {
                     recipePopVC.recipeID = recipeID
                     recipePopVC.recipeName = recipeNameText
@@ -138,6 +151,7 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     ingredientsText.removeLast(2)   // Extra ", "
                     recipePopVC.ingredients = ingredientsText
                     recipePopVC.instructions = instructionsText
+                    recipePopVC.website = websiteURL
                     recipePopVC.image = recipeImageBackground
                 } else {
                     recipePopVC.recipeID = 0
@@ -177,6 +191,7 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 ingredients = recipe.value(forKey: "ingredients") as? [String]
                 ingredientsTable.reloadData()
+                websiteURL = (recipe.value(forKey: "websiteURL") as! String)
                 instructionsText = (recipe.value(forKey: "prepInstructions") as! String)
                 instructions.text = instructionsText
                 prepTimeText = "Prep Time: \(recipe.value(forKey: "prepTime") as! Int) minutes"

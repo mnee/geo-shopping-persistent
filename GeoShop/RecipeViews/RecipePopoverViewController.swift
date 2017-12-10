@@ -42,12 +42,15 @@ class RecipePopoverViewController: UIViewController, UIImagePickerControllerDele
     }
     @IBOutlet weak var ingredientsTF: UITextField! { didSet { ingredientsTF.text = ingredients } }
     @IBOutlet weak var instructionsTF: UITextField! { didSet { instructionsTF.text = instructions } }
+    @IBOutlet weak var websiteTF: UITextField! { didSet
+        { websiteTF.text = website } }
     
     // Used to set fields according to current recipe when editing rather than making new one
     var recipeName: String?
     var prepTime: String?
     var ingredients: String?
     var instructions: String?
+    var website: String?
     var image: UIImage? {
         didSet {
             imageSet = true
@@ -62,7 +65,8 @@ class RecipePopoverViewController: UIViewController, UIImagePickerControllerDele
         if let recipeName = recipeNameTF.text,
             let prepTime = prepTimeTF.text,
             let ingredients = ingredientsTF.text,
-            let instructions = instructionsTF.text {
+            let instructions = instructionsTF.text,
+            let website = websiteTF.text {
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let managedContext = appDelegate.persistentContainer.viewContext
@@ -82,6 +86,7 @@ class RecipePopoverViewController: UIViewController, UIImagePickerControllerDele
                 recipe.setValue(recipeName, forKey: "recipeName")
                 recipe.setValue(instructions, forKey: "prepInstructions")
                 recipe.setValue(Int(prepTime), forKey: "prepTime")
+                recipe.setValue(website, forKey: "websiteURL")
                 recipe.setValue(ingredients.components(separatedBy: ", "), forKey: "ingredients")
                 recipe.setValue(imageSet ? "Recipe\(recipeID!)" : "Default", forKey: "imageURL")
             } catch let error {

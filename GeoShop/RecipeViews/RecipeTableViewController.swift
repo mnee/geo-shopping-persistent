@@ -133,9 +133,11 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
             }
         } else if segue.identifier == "showDetail" {
             if let recipeFocusVC = segue.destination as? RecipeViewController {
+                recipeFocusVC.title = ""
                 if let recipeData = sender as? NSManagedObject {
                     recipeFocusVC.ingredients = recipeData.value(forKey: "ingredients") as? [String]
                     recipeFocusVC.instructionsText = (recipeData.value(forKey: "prepInstructions") as! String)
+                    recipeFocusVC.websiteURL = (recipeData.value(forKey: "websiteURL") as! String)
                     recipeFocusVC.prepTimeText = "Prep Time: \(recipeData.value(forKey: "prepTime") as! Int) minutes"
                     recipeFocusVC.recipeNameText = recipeData.value(forKey: "recipeName") as? String
                     recipeFocusVC.recipeIndexInList = recipes?.index(of: recipeData)
@@ -170,8 +172,10 @@ class RecipeTableViewController: UIViewController, UITableViewDelegate, UITableV
         if let indexPath = recipeTable.indexPathForRow(at: location), let recipeData = recipes?[indexPath.item] {
             let previewVC = storyboard?.instantiateViewController(withIdentifier: "RecipeView")
             if let recipeFocusVC = previewVC as? RecipeViewController {
+                recipeFocusVC.title = ""
                 recipeFocusVC.ingredients = recipeData.value(forKey: "ingredients") as? [String]
                 recipeFocusVC.instructionsText = (recipeData.value(forKey: "prepInstructions") as! String)
+                recipeFocusVC.websiteURL = (recipeData.value(forKey: "websiteURL") as! String)
                 recipeFocusVC.prepTimeText = "Prep Time: \(recipeData.value(forKey: "prepTime") as! Int) minutes"
                 recipeFocusVC.recipeNameText = recipeData.value(forKey: "recipeName") as? String
                 recipeFocusVC.recipeIndexInList = recipes?.index(of: recipeData)
